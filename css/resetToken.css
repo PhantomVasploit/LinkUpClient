@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;800&family=Roboto:wght@400;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+main{
+    gap: 30px;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .reset-token-form{
+    gap: 30px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reset-token-form #reset-token-form{
+    gap: 15px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reset-token-form #reset-token-form .title{
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reset-token-form #reset-token-form .title h2{
+    font-weight: 900;
+    font-size: xx-large;
+}
+
+.form-inputs{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-inputs .token{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-inputs .token{
+    width: 100%;
+}
+
+.form-inputs .token input[type="text"]{
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: #000000;
+}
+
+
+
+.reset-token-btn{
+    width: 100%;
+}
+
+.reset-token-btn button{
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    background: #162D3A;
+    border-radius: 10px;
+}
+
+
+
+.copyright{
+    gap: 2px;
+    display: flex;
+    color: #959CB6;
+    align-items: center;
+}
+
+main .side-image{   
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .side-image  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+@media screen and (max-width:800px) {
+    main .side-image{
+        display: none;
+    }
+
+    main .reset-token-form .title p{
+        display: none;
+    }
+
+    main .reset-token-form{
+        width: 100%;
+        height: 100%;
+    }
+}

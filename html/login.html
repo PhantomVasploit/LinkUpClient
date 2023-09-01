@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Link Up</title>
+</head>
+<body>
+    
+    <main>
+        <section class="login-form">
+            <form id="sign-in-form" action="">
+                
+                <div class="title">
+                    <h2>Login</h2  >
+                    <div class="welcome-text">
+                        <p>
+                            Today is a new day. 
+                            It's your day. You shape it. 
+                        </p>
+                        <p>
+                            Sign in to express yourself fully.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-inputs">
+
+                    <div class="email">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Example@email.com">
+                        <div class="email-error"></div>
+                    </div>
+
+                    <div class="password">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="At least 8 characters">
+                        <div class="password-error"></div>
+                    </div>
+                </div>
+
+                <div class="forgot-pwd">
+                    <a id="forgot-pwd" href="./forgotPassword.html"><small>Forgot Password?</small></a>
+                </div>
+
+                <div class="sign-in-btn">
+                    <button id="login-btn" type="submit">Sign In</button>
+                </div>
+
+                <div class="or-block">
+                    <hr>
+                    <p>or</p>
+                    <hr>
+                </div>
+
+                <div class="sign-up">
+                    <a id="registrationNavigation" href="./register.html"><small>Don't you have an account? Sign up</small></a>
+                </div>
+
+            </form>
+
+            <div class="copyright">
+                <iconify-icon icon="ph:copyright-thin"></iconify-icon>
+                <p>2023 ALL RIGHTS RESERVED</p>
+            </div>
+        </section>
+
+        <section class="side-image">
+            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/rm314-adj-01-a.jpg" alt="login back ground image">
+        </section>
+    </main>
+
+    <script src="../js/login.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>
