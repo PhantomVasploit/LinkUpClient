@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Link Up</title>
+</head>
+<body>
+
+    <main>
+
+        <section class="sidebar">
+            <div class="top">
+                <div class="home-link">
+                    <iconify-icon width="20px" height="20px" class="icon" icon="iconamoon:home-thin"></iconify-icon>
+                    <a href="#"><p>Home</p></a>
+                </div>
+                <div class="profile-link">
+                    <iconify-icon width="20px" height="20px" class="icon" icon="iconamoon:profile-circle-thin"></iconify-icon>
+                    <a href="#"><p>Profile</p></a>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <iconify-icon width="20px" height="20px" class="icon" icon="teenyicons:logout-solid"></iconify-icon>
+                    <a href="#"><p>Logout</p></a>
+                </div>
+                <div class="user-profile">
+                    <div class="image">
+                        <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                    </div>
+                    <div class="username">
+                        <p><strong>Phantom Vasploit</strong></p>
+                        <p>@Phantom_</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main">
+
+            <div class="hero">
+                <h3>Home</h3>
+                <input type="text" name="search" id="search" placeholder="search post">
+                <iconify-icon width="30px" height="30px" class="icon" icon="bi:stars"></iconify-icon>
+            </div>
+
+            <div class="new-post">
+                <form class="post-input">
+                    <div class="post-creation">
+                        <div class="image">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user-profile-image">
+                        </div>
+                        <input type="text" name="new-post" id="new-post" placeholder="Create new post.">
+                    </div>
+
+                    <div class="additional-post-info">
+                        <label for="image">
+                            <iconify-icon width="30px" height="30px" class="icon" icon="ic:round-image"></iconify-icon>
+                        </label>
+                        <input type="file" name="image" id="image">
+
+                        <button type="submit">Post</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="posts"></div>
+        </section>
+
+
+        <section class="followers"></section>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+</html>

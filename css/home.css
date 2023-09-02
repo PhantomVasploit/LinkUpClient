@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;800&family=Roboto:wght@400;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .sidebar{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid white;
+}
+
+main .sidebar .top, .bottom{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+main .sidebar .top .home-link, .profile-link {
+    gap: 20px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+main .sidebar .bottom .logout{
+    gap: 20px;
+    display: flex;
+    padding: 20px;
+    font-weight: bold;
+    align-items: center;
+}
+
+main .sidebar .top a, .bottom a{
+    color: white;
+    text-decoration: none;
+}
+
+main .bottom .user-profile{
+    gap: 20px;
+    display: flex;
+    color: white;
+    padding: 20px;
+}
+
+main .bottom .user-profile .image{
+    width: 50px;
+    height: 50px;
+}
+
+main .bottom .user-profile .image img{
+    width: 100%;
+    height: 100%;
+}
+
+main .sidebar .top p{
+    font-weight: bold;
+}
+
+main .main{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main .main .hero{
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main .hero input[type="text"]{
+    width: 50%;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #202327;
+}
+
+main .main .new-post{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+main .main .new-post .post-creation{
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+main .main .new-post .post-creation input[type="text"]{
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    background-color: #000000;
+}
+
+main .main .new-post .post-creation .image{
+    width: 50px;
+    height: 50px;
+}
+
+main .main .new-post .post-creation .image img{
+    width: 100%;
+    height: 100%;
+}
+
+main .main .new-post .additional-post-info{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main .new-post .additional-post-info input[type="file"]{
+    display: none;
+}
+
+main .main .new-post .additional-post-info button{
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: #1D9BF0;
+}
+
+main .main .posts{
+    width: 100%;
+    height: 70%;
+}
+
+main .followers{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid white;
+}
+
+.icon{
+    color: white;
+    font-weight: bold;
+}
