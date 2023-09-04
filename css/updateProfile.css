@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;800&family=Roboto:wght@400;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+main{
+    gap: 60px;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .login-form{
+    gap: 30px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-form #sign-up-form{
+    gap: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reguster-form #sign-up-form .title{
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form #sign-up-form .title h2{
+    font-weight: 900;
+    font-size: xx-large;
+}
+
+.form-inputs{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-inputs .email, .password, .first-name, .last-name, .profile-picture{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-inputs .email{
+    width: 100%;
+}
+
+.form-inputs .email input[type="email"], input[type="file"], input[type="text"]{
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: #000000;
+}
+
+.form-inputs input[type="file"]{
+    display: none;
+}
+
+.form-inputs .profile-picture .icon{
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+
+.sign-up-btn{
+    width: 100%;
+}
+
+.sign-up-btn button{
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    background: #162D3A;
+    border-radius: 10px;
+}
+
+.sign-in a{
+    color: white;
+    text-decoration: none;
+}
+
+.copyright{
+    gap: 2px;
+    width: 100%;
+    display: flex;
+    color: #959CB6;
+    align-items: center;
+    justify-content: center;
+}
+
+main .side-image{   
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .side-image  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+@media screen and (max-width:800px) {
+    main .side-image{
+        display: none;
+    }
+
+    main .register-form .title p{
+        display: none;
+    }
+
+    main .register-form{
+        width: 100%;
+        height: 100%;
+    }
+}
