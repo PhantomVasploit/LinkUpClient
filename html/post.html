@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/post.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Link Up</title>
+</head>
+<body>
+
+    <main>
+
+        <section class="sidebar">
+            <div class="top">
+                <div class="home-link">
+                    <iconify-icon width="20px" height="20px" class="icon" icon="iconamoon:home-thin"></iconify-icon>
+                    <a href="#"><p>Home</p></a>
+                </div>
+                <div class="profile-link">
+                    <iconify-icon width="20px" height="20px" class="icon" icon="iconamoon:profile-circle-thin"></iconify-icon>
+                    <a href="#"><p>Profile</p></a>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <iconify-icon width="20px" height="20px" class="icon" icon="teenyicons:logout-solid"></iconify-icon>
+                    <a href="#"><p>Logout</p></a>
+                </div>
+                <div class="user-profile">
+                    <div class="image">
+                        <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                    </div>
+                    <div class="username">
+                        <p><strong>Phantom Vasploit</strong></p>
+                        <p>@Phantom_</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="main">
+
+            <div class="hero">
+                <h3>Post</h3>
+                <iconify-icon width="30px" height="30px" class="icon" icon="bi:stars"></iconify-icon>
+            </div>
+
+            <div class="post">
+
+                <div class="user-profile">
+                    <div class="image">
+                        <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user-profile-image">
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="title">
+                        <p><strong>Phantom Vasploit</strong></p>
+                        <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                        <small>@Phantom_</small>
+                        <small>7m</small>
+                    </div>
+                    <div class="info">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Perspiciatis in tempore, 
+                        facilis obcaecati provident, 
+                        dolorum quae hic illum placeat vel saepe, 
+                        autem molestias iste sint sit! 
+                        Ratione quis ut consectetur.
+                    </div>
+                    <div class="info-image">
+                        <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/rm314-adj-01-a.jpg" alt="">
+                    </div>
+                    <div class="info-icons">
+                        <div class="comments">
+                            <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>
+                            <p>700</p>
+                        </div>
+                        <div class="likes">
+                            <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>
+                            <p>700</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-comments">
+                <div class="title">
+                    <h3>Comments</h3>
+                </div>
+                <div class="new-comment">
+                    <form action="">
+                        <div class="comment-creation">
+                            <div class="right">
+                                <div class="image">
+                                    <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user-profile-image">
+                                </div>
+                            </div>
+                            <div class="middle">
+                                <input type="text" name="new-post" id="new-post" placeholder="Create new comment.">
+                            </div>
+                            <div class="left">
+                                <button type="submit">Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="comment-list">
+
+                    <div class="cmnt">
+                        <div class="profile">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="title">
+                                <p><strong>Phantom Vasploit</strong></p>
+                                <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                                <small>@Phamtom_</small>
+                                <small>7m</small>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="info-icons">
+                                <div class="comments">
+                                    <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>
+                                    <p>700</p>
+                                </div>
+                                <div class="likes">
+                                    <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>
+                                    <p>700</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmnt">
+                        <div class="profile">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="title">
+                                <p><strong>Phantom Vasploit</strong></p>
+                                <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                                <small>@Phamtom_</small>
+                                <small>7m</small>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="info-icons">
+                                <div class="comments">
+                                    <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>
+                                    <p>700</p>
+                                </div>
+                                <div class="likes">
+                                    <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>
+                                    <p>700</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cmnt">
+                        <div class="profile">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="title">
+                                <p><strong>Phantom Vasploit</strong></p>
+                                <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                                <small>@Phamtom_</small>
+                                <small>7m</small>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="info-icons">
+                                <div class="comments">
+                                    <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>
+                                    <p>700</p>
+                                </div>
+                                <div class="likes">
+                                    <iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>
+                                    <p>700</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="followers">
+            <div class="search">
+                <input type="text" name="search-user" id="search-user" placeholder="followers">
+            </div>
+            <div class="users">
+                <div class="title">
+                    <h3>Your Followers</h3>
+                </div>
+                <div class="user-container">
+                    <div class="follower">
+                        <div class="image">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                        </div>
+                        <div class="name">
+                            <div class="icon">
+                                <p><strong>Phantom Vasploit</strong></p>
+                                <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                            </div>
+                            <small>@Phantom_</small>
+                        </div>
+                        <div class="view-profile">
+                            <a href="#"><button>Profile</button></a>
+                        </div>
+                    </div>
+                    <div class="follower">
+                        <div class="image">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                        </div>
+                        <div class="name">
+                            <div class="icon">
+                                <p><strong>Phantom Vasploit</strong></p>
+                                <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                            </div>
+                            <small>@Phantom_</small>
+                        </div>
+                        <div class="view-profile">
+                            <a href="#"><button>Profile</button></a>
+                        </div>
+                    </div>
+                    <div class="follower">
+                        <div class="image">
+                            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="">
+                        </div>
+                        <div class="name">
+                            <div class="icon">
+                                <p><strong>Phantom Vasploit</strong></p>
+                                <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+                            </div>
+                            <small>@Phantom_</small>
+                        </div>
+                        <div class="view-profile">
+                            <a href="#"><button>Profile</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <script src="../js/post.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+</html>

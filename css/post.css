@@ -11,6 +11,8 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
+    color: white;
+    overflow: hidden;
     align-items: center;
     justify-content: center;
     background-color: #000000;
@@ -96,7 +98,7 @@ main .main{
 
 main .main .hero{
     width: 100%;
-    height: 10%;
+    height: 5%;
     padding: 20px;
     display: flex;
     color: white;
@@ -104,62 +106,110 @@ main .main .hero{
     justify-content: space-between;
 }
 
-main .main .hero input[type="text"]{
-    width: 50%;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background-color: #202327;
+main .main .post{
+    gap: 20px;
+    width: 100%;
+    height: 50%;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-main .main .new-post{
+
+main .main .post .user-profile .image{
+    width: 50px;
+    height: 50px;
+}
+
+main .main .post .user-profile .image img{
     width: 100%;
-    height: 20%;
+    height: 100%;
+}
+
+
+main .main .post .content{
+    gap: 15px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+main .main .post .content .title{
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+main .main .post .content .info-image{
+    width: 100%;
+    height: 200px;
+    border-radius: 36px;
+}
+
+main .main .post .content .info-image img{
+    height: 100%;
+    width: 100%;
+    border-radius: 36px;
+}
+
+main .main .post .content .info-icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main .post .content .info-icons .comments, .likes{
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .main .post-comments{
+    width: 100%;
+    height: 45%;
+    display: flex;
+   flex-direction: column;
+}
+
+
+main .main .post-comments .title{
+    padding: 20px;
+}
+
+main .main .post-comments .new-comment .comment-creation{
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    /* margin-left: 20px; */
+    display: flex;
+    /* border-radius: 10px; */
+    align-items: center;
+    /* border: 1px solid white; */
     border-top: 1px solid white;
+    justify-content: space-between;
     border-bottom: 1px solid white;
 }
 
-main .main .new-post .post-creation{
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    align-items: center;
+main .main .post-comments .new-comment .comment-creation .left, .right{
+    width: 1    0%;
 }
 
-main .main .new-post .post-creation input[type="text"]{
+main .main .post-comments .new-comment .comment-creation .middle{
+    width: 60%;
+}
+
+main .main .post-comments .new-comment .comment-creation .middle input[type="text"]{
+    width: 100%;
     border: none;
     color: white;
     padding: 10px 20px;
     background-color: #000000;
 }
 
-main .main .new-post .post-creation .image{
-    width: 50px;
-    height: 50px;
-}
-
-main .main .new-post .post-creation .image img{
-    width: 100%;
-    height: 100%;
-}
-
-main .main .new-post .additional-post-info{
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-main .main .new-post .additional-post-info input[type="file"]{
-    display: none;
-}
-
-main .main .new-post .additional-post-info button{
+main .main .post-comments .new-comment .comment-creation .left button{
     border: none;
     color: white;
     padding: 5px 15px;
@@ -167,10 +217,19 @@ main .main .new-post .additional-post-info button{
     background-color: #1D9BF0;
 }
 
-main .main .posts{
+main .main .post-comments .new-comment .comment-creation .image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+main .main .post-comments .new-comment .comment-creation .image img{
     width: 100%;
-    height: 70%;
-    color: white;
+    height: 100%;
+}
+
+main .main .post-comments .comment-list{
+    width: 100%;
     display: flex;
     overflow-y: scroll;
     align-items: center;
@@ -178,63 +237,45 @@ main .main .posts{
     justify-content: flex-start;
 }
 
-main .main .posts::-webkit-scrollbar{
+main .main .post-comments .comment-list::-webkit-scrollbar{
     display: none;
 }
 
-main .main .posts .post{
+main .main .post-comments .comment-list .cmnt{
     gap: 30px;
     width: 100%;
     display: flex;
     padding: 20px;
     align-items: flex-start;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
-main .main .posts .post .user-profile .image{
+main .main .post-comments .comment-list .cmnt .profile{
     width: 50px;
     height: 50px;
+    border-radius: 50%;
 }
 
-main .main .posts .post .user-profile .image img{
+main .main .post-comments .comment-list .cmnt .profile img{
     width: 100%;
     height: 100%;
 }
 
-main .main .posts .post .content{
-    gap: 15px;
-    display: flex;
-    /* align-items: center; */
-    flex-direction: column;
-    justify-content: center;
-}
-
-main .main .posts .post .content .title{
+main .main .post-comments .comment-list .cmnt .title{
     gap: 10px;
+    padding: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 }
 
-main .main .posts .post .content .info-image{
+main .main .post-comments .comment-list .cmnt .info-icons{
     width: 100%;
-    height: 300px;
-    border-radius: 36px;
-}
-
-main .main .posts .post .content .info-image img{
-    height: 100%;
-    width: 100%;
-    border-radius: 36px;
-}
-
-main .main .posts .post .content .info-icons{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-main .main .posts .post .content .info-icons .comments, .likes{
+main .main .post-comments .comment-list .cmnt .info-icons .comments, .likes{
     gap: 10px;
     display: flex;
     align-items: center;
@@ -334,8 +375,6 @@ main .followers .users .user-container .follower .view-profile button{
     font-weight: bold;
 }
 
-
-
 @media screen and (max-width: 1024px) {
     main .followers{
         display: none;
@@ -343,59 +382,87 @@ main .followers .users .user-container .follower .view-profile button{
 
     main .main{
         width: 70%;
-    }
-
-    main .main .new-post{
-        height: 25%;
+        border-right: 1px solid white;
     }
 
     main .sidebar{
         width: 30%;
     }
+
+    main .main .post-comments{
+        align-items: center;
+    }
+
+    main .main .post{
+        overflow-y: scroll;
+    }
+
+    main .main .post-comments .new-comment{
+        width: 100%;
+    }
+
+    main .main .post-comments .title{
+        width: 100%;
+    }
+
+    main .main .post::-webkit-scrollbar{
+        display: none;
+    }
 }
 
-
 @media screen and (max-width: 768px) {
-    main{
-        flex-direction: column-reverse;
-    }
-
-    main .main{
-        width: 100%;
-        height: 93%;
-    }
-
-    main .main .new-post{
-        height: 25%;
-    }
-
-    main .followers{
-        display: none;
-    }
-
-    main .sidebar{
-        width: 100%;
-        height: 7%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    main .sidebar a{
-        display: none;
-    }
-    main .sidebar .top{
-        flex-direction: row;
-    }
-    main .sidebar .top .home-link, .profile-link{
-        flex-direction: column;
-    }
     main .sidebar .bottom .user-profile{
         display: none;
     }
+    main .main .post-comments{
+        align-items: center;
+    }
+    main .main .post-comments .new-comment{
+        width: 100%;
+    }
 }
 
-@media screen and (max-width: 375px) {
-    main .main .posts .post .content .title small {
+@media screen and (max-width: 425px) {
+    main{
+        overflow-x: hidden;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+        border-left: 1px solid white;
+    }
+
+    main .main{
+        height: 90%;
+        width: 100%;
+    }
+
+    main .sidebar{
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+        /* border: 1px solid white; */
+    }
+
+    main .sidebar .top{
+        gap: 70px;
+        flex-direction: row;
+    }
+
+    main .sidebar p{
+    display: none;
+    }
+
+    main .main .post-comments .new-comment{
+        width: 100%;
+    }
+
+    main .main .post-comments .cmnt .content .title small{
+        display: none;
+    }
+    main .main .post-comments .comment-list{
+        align-items: center;
+    }
+    main .main .post-comments .cmnt .profile{
         display: none;
     }
 }
