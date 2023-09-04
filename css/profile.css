@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;800&family=Roboto:wght@400;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    color: white;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .sidebar{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid white;
+}
+
+main .sidebar .top, .bottom{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+main .sidebar .top .home-link, .profile-link {
+    gap: 20px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+main .sidebar .bottom .logout{
+    gap: 20px;
+    display: flex;
+    padding: 20px;
+    font-weight: bold;
+    align-items: center;
+}
+
+main .sidebar .top a, .bottom a{
+    color: white;
+    text-decoration: none;
+}
+
+main .bottom .user-profile{
+    gap: 20px;
+    display: flex;
+    color: white;
+    padding: 20px;
+}
+
+main .bottom .user-profile .image{
+    width: 50px;
+    height: 50px;
+}
+
+main .bottom .user-profile .image img{
+    width: 100%;
+    height: 100%;
+}
+
+main .sidebar .top p{
+    font-weight: bold;
+}
+
+main .main{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main .main .hero{
+    width: 100%;
+    height: 6%;
+    padding: 20px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main .user-profile{
+    width: 100%;
+    height: 20%;
+}
+
+main .main .user-info{
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+main .main .user-info .profile-image{
+    width: 150px;
+    height: 150px;
+    margin-top: -90px;
+}
+
+main .main .user-info .profile-image img{
+    width: 100%;
+    height: 100%;
+}
+
+main .main .user-info .user-name{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+main .main .user-info .user-name .icon{
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+main .main .user-info .user-name .user-friends{
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .main .user-info .edit-profile button{
+    border: none;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+main .main .user-info .delete-account button{
+    color: red;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid red;
+    background-color: white;
+}
+
+main .main .user-posts{
+    width: 100%;
+    height: 64%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+main .main .user-posts .title{
+    width: 100%;
+    padding: 10px;
+    margin-left: 40px; 
+}
+
+main .main .user-profile img{
+    width: 100%;
+    height: 100%;
+}
+
+main .main .user-posts .post{
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    overflow-y: scroll;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+main .main .user-posts .post::-webkit-scrollbar{
+    display: none;
+}
+
+main .main .user-posts .post .post-content{
+    gap: 70px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+main .main .user-posts .post .post-content .content{
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main .main .user-posts .post .image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+main .main .user-posts .post .image img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+main .main .user-posts .post .content .name{
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+main .main .user-posts .post .content .info{
+    width: 100%;
+}
+
+main .main .user-posts .post .content .info-image{
+    width: 100%;
+    height: 300px;
+    border-radius: 36px;
+}
+
+main .main .user-posts .post .content .info-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 36px;
+}
+
+main .main .user-posts .post .content .info-icons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main .user-posts .post .content .info-icons .comments, .likes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .followers{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid white;
+}
+
+main .followers .search{
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .followers .search input[type="text"]{
+    width: 80%;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color: #202327;
+}
+
+main .followers .users{
+    width: 80%;
+    height: 85%;
+    display: flex;
+    color: white;
+    align-items: center;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #202327;
+}
+
+main .followers .users .title{
+    height: 10%;
+    padding: 20px;
+    align-self: flex-start;
+}
+
+main .followers .users .user-container{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+main .followers .users .user-container .follower{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .followers .users .user-container .follower .image{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+main .followers .users .user-container .follower .image img{
+    width: 100%;
+    height: 100%;
+}
+
+main .followers .users .user-container .follower .name .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .followers .users .user-container .follower .view-profile button{
+    border: none;
+    color: #000000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.icon{
+    color: white;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1024px) {
+    main{
+        border-right: 1px solid white;
+    }
+    main .followers{
+        display: none;
+    }
+    main .sidebar{
+        width: 30%;
+    }
+
+    main .main{
+        width: 70%;
+    }
+    main .main .user-info .delete-account{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main{
+        flex-direction: column-reverse;
+    }
+    main .main{
+        width: 100%;
+        height: 90%;
+    }
+    main .sidebar{
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+    }
+    main .sidebar .bottom .user-profile{
+        display: none;
+    }
+    main .sidebar .top, .bottom{
+        flex-direction: row;
+    }
+    main .sidebar .top p, .bottom p{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    main .main .user-info .delete-account{
+        display: none;
+    }
+
+    main .main .user-info .user-name .user-friends{
+        display: none;
+    }
+
+    main .main .user-info .user-name .icon iconify-icon{
+        display: none;
+    }
+}
