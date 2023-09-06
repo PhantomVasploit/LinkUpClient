@@ -35,7 +35,7 @@ main .sidebar{
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    border-right: 1px solid white;
+    border-right: 1px solid rgba(255, 255, 255, .1);
 }
 
 main .sidebar .top, .bottom{
@@ -104,6 +104,7 @@ main .main .hero{
     color: white;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 main .main .user-profile{
@@ -123,7 +124,7 @@ main .main .user-info{
 main .main .user-info .profile-image{
     width: 150px;
     height: 150px;
-    margin-top: -90px;
+    margin-top: -40px;
 }
 
 main .main .user-info .profile-image img{
@@ -153,18 +154,18 @@ main .main .user-info .user-name .user-friends{
 
 main .main .user-info .edit-profile button{
     border: none;
-    color: #000000;
+    color: white;
     padding: 10px 20px;
     border-radius: 20px;
-    background-color: white;
+    background-color: #162D3A;
 }
 
 main .main .user-info .delete-account button{
-    color: red;
+    border: none;
+    color: white;
     padding: 10px 20px;
     border-radius: 20px;
-    border: 1px solid red;
-    background-color: white;
+    background-color: red;
 }
 
 main .main .user-posts{
@@ -197,6 +198,7 @@ main .main .user-posts .post{
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
+    border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
 main .main .user-posts .post::-webkit-scrollbar{
@@ -218,6 +220,11 @@ main .main .user-posts .post .post-content .content{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+}
+
+a{
+    color: white;
+    text-decoration: none;
 }
 
 main .main .user-posts .post .image{
@@ -276,7 +283,7 @@ main .followers{
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-left: 1px solid white;
+    border-left: 1px solid rgba(255, 255, 255, .1);
 }
 
 main .followers .search{

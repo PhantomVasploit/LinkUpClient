@@ -34,5 +34,5 @@ document.querySelector('#set-new-password').addEventListener('submit', (e)=>{
         confrimPasswordError.style.color = "#000000"
     })
 
-    // window.location.href = './login.html'
+    window.location.href = './login.html'
 })

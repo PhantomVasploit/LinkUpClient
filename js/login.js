@@ -46,9 +46,9 @@ document.querySelector('#sign-in-form').addEventListener('submit', (e)=>{
 
 
     //submission
-    if(email.value && password.value){
+    // if(email.value && password.value){
         
-    }
+    // }
 
-    // window.location.href = './home.html'
+    window.location.href = './home.html'
 })

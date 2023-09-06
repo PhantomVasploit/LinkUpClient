@@ -60,4 +60,5 @@ document.querySelector('#sign-up-form').addEventListener('submit', (e)=>{
         passwordError.style.color = "#000000"
     })
 
+    window.location.href = './login.html'
 })

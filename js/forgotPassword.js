@@ -16,5 +16,5 @@ document.querySelector('#forgot-password-form').addEventListener('submit', (e)=>
         emailError.style.color = "#000000"
     })
 
-    // window.location.href = './resetToken.html'
+    window.location.href = './resetToken.html'
 })
