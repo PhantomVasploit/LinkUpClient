@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run",
+    "test": "cypress run",
     "prepare": "husky install"
   },
   "keywords": [],

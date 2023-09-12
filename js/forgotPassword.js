@@ -16,5 +16,6 @@ document.querySelector('#forgot-password-form').addEventListener('submit', (e)=>
         emailError.style.color = "#000000"
     })
 
+    axios.post()
     // window.location.href = './resetToken.html'
 })
