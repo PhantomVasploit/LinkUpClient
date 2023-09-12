@@ -16,5 +16,5 @@ document.querySelector('#reset-token-form').addEventListener('click', (e)=>{
         tokenError.style.color = "#000000"
     })
 
-    window.location.href = './setNewPassword.html'
+    // window.location.href = './setNewPassword.html'
 })

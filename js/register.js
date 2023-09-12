@@ -1,64 +1,126 @@
-const firstName = document.querySelector('#first-name')
-const lastName = document.querySelector('#last-name')
+const main = document.querySelector('main')
 const email = document.querySelector('#email')
-const password = document.querySelector('#password')
+const lastName = document.querySelector('#last-name')
+const firstName = document.querySelector('#first-name')
 
-const firstNameError = document.querySelector('.first-name-error')
-const lastNameError = document.querySelector('.last-name-error')
 const emailError = document.querySelector('.email-error')
-const passwordError = document.querySelector('.password-error')
+const lastNameError = document.querySelector('.last-name-error')
+const firstNameError = document.querySelector('.first-name-error')
 
-document.querySelector('#sign-up-form').addEventListener('submit', (e)=>{
+let profilePictureUrl = ''
+let isProfilePictureUploaded = false
+
+function handleSubmissionError(message) {
+    Toastify({
+        text: message,
+        duration: 30000,
+        backgroundColor: "#f44336",
+        close: true,
+        stopOnFocus: true,
+        gravity: "top",
+        position: "center",
+    }).showToast();
+}
+
+document.querySelector("#profile-picture").addEventListener('change', (e)=>{
+    const files = e.target.files
+    if(files){
+        const formData = new FormData()
+        formData.append("file", files[0])
+        formData.append("upload_preset", "Shopie")
+        formData.append("cloud_name", "dx3mq7rzr")
+
+
+        fetch('https://api.cloudinary.com/v1_1/dx3mq7rzr/image/upload', {
+            method: "POST",
+            body: formData
+        })
+        .then((res)=>{
+            res.json()
+            
+            .then((response)=>{
+                profilePictureUrl = response.url
+                isProfilePictureUploaded = true
+            })
+        })
+        .catch((e)=>{
+            if(!e.response){
+                handleSubmissionError(e.message)
+            }else{
+                handleSubmissionError(e.response.data.error)
+            }
+        })
+    }
+})
+
+document.querySelector('#sign-up-form').addEventListener('submit', (e) => {
     e.preventDefault()
 
+    if (!isProfilePictureUploaded) {
+        handleSubmissionError("Profile picture is still uploading")
+    }
+
     //data sanitization
-    if(firstName.value === '' || firstName.value === null || firstName.value === undefined){
+    if (firstName.value === '' || firstName.value === null || firstName.value === undefined) {
         firstName.style.border = "1px solid red"
         firstNameError.innerHTML = "Please enter your first name"
         firstNameError.style.color = "red"
     }
 
-    firstName.addEventListener('input', ()=>{
+    firstName.addEventListener('input', () => {
         firstName.style.border = "1px solid white"
         firstNameError.innerHTML = ""
         firstNameError.style.color = "#000000"
     })
 
-    if(lastName.value === '' || lastName.value === null || lastName === undefined){
+    if (lastName.value === '' || lastName.value === null || lastName === undefined) {
         lastName.style.border = "1px solid red"
         lastNameError.innerHTML = "Please enter your last name"
-        firstNameError.style.color = "red"
+        lastNameError.style.color = "red"
     }
 
-    lastName.addEventListener('input', ()=>{
+    lastName.addEventListener('input', () => {
         lastName.style.border = "1px solid white"
         lastNameError.innerHTML = ""
         lastNameError.style.color = "#000000"
     })
 
-    if(email.value === '' || email.value === null || email.value === undefined){
+    if (email.value === '' || email.value === null || email.value === undefined) {
         email.style.border = "1px solid red"
         emailError.innerHTML = "Please enter your email address"
         emailError.style.color = "red"
     }
 
-    email.addEventListener('input', ()=>{
+    email.addEventListener('input', () => {
         email.style.border = "1px solid white"
         emailError.innerHTML = ""
         emailError.style.color = "#000000"
     })
 
-    if(password.value === '' || password.value === null || password.value === undefined){
-        password.style.border = "1px solid red"
-        passwordError.innerHTML = "Please enter your password"
-        passwordError.style.color = "red"
-    }
 
-    password.addEventListener('input', ()=>{
-        password.style.border = "1px solid white"
-        passwordError.innerHTML = ""
-        passwordError.style.color = "#000000"
-    })
-
-    window.location.href = './login.html'
+    axios.post('http://127.0.0.1:8080/api/link-up/v1/register',
+        {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            profilePicture: profilePictureUrl
+        },
+        {
+            header: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(() => {
+            window.location.href = `./setNewPassword.html?email=${email.value}`
+        })
+        .catch((e) => {
+            if (!e.response) {
+                handleSubmissionError(e.message)
+            } else {
+                handleSubmissionError(e.response.data.error)
+            }
+        })
 })
+
+
+

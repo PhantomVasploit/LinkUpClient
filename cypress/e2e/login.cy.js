@@ -2,11 +2,8 @@
 
 describe('login test suit', () => {
   
-  it('should show error messages when ', () => {
-    cy.visit('/login.html')
+  it('should display error message if user tries to submit an empty form', ()=>{
     cy.loginDataSanitization()
-    cy.get('.email-error').should('contain', 'Please provide your email address')
-    cy.get('.password-error').should('contain', 'Please enter your password')
   })
 
   it('should navigate to forgot password page if the forgot password text is clicked', ()=>{
@@ -21,6 +18,18 @@ describe('login test suit', () => {
     cy.get('#registrationNavigation').click()
     cy.location('pathname').should('not.equal', '/login.html')
     cy.location('pathname').should('equal', '/html/register.html')
+  })
+
+  it('should display error message when user user submits an unregistered email address', ()=>{
+    cy.loginWithWrongEmailAddress()
+  })
+
+  it('should display error message when user submits an invalid password', ()=>{
+    cy.loginWithWrongPassword()
+  })
+
+  it('should login in user and navigate to home if login is successful', ()=>{
+    cy.loginWithRightCredentials()
   })
 
 })

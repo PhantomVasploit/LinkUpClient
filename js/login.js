@@ -7,7 +7,7 @@ const passwordError = document.querySelector('.password-error')
 function handleSubmissionError(message){
     Toastify({
         text: message,
-        duration: 3000, 
+        duration: 50000, 
         backgroundColor: "#f44336",
         close: true,
         stopOnFocus: true,
@@ -45,10 +45,30 @@ document.querySelector('#sign-in-form').addEventListener('submit', (e)=>{
     })
 
 
-    //submission
-    // if(email.value && password.value){
-        
-    // }
+    axios.post('http://127.0.0.1:8080/api/link-up/v1/login', 
+    {
+        email: email.value,
+        userPassword: password.value
+    },
+    {
 
-    window.location.href = './home.html'
+    })
+    .then((response)=>{
+        Toastify({
+            text: response.data.message,
+            backgroundColor: "#4caf50", 
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "success",
+          }).showToast();
+        window.location.href = './home.html'
+    })
+    .catch((e)=>{
+        if(!e.response){
+            handleSubmissionError(e.message)
+        }else{
+            handleSubmissionError(e.response.data.error)
+        }
+    })
 })
