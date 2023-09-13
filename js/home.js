@@ -48,17 +48,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         'Content-Type': 'application/json'
     })
     .then((response)=>{
-        Toastify({
-            text: response.data.message,
-            style: {
-                background: '#4caf50'
-            }, 
-            duration: 300,
-            close: true,
-            gravity: "top",
-            position: "success",
-          }).showToast();
-          
           response.data.posts.forEach((post)=>{
               const postDiv = document.createElement('div')
               postDiv.classList.add('post')
@@ -74,7 +63,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
               profilePicture.style.borderRadius = "50%"
               imageDiv.appendChild(profilePicture) 
               userProfileDiv.appendChild(imageDiv) 
-              postDiv.appendChild(userProfileDiv)
+              const userProfileLink = document.createElement('a')
+              userProfileLink.href = `./profile.html?user_id=${post.user_id}`
+              userProfileLink.style.textDecoration = "none"
+              userProfileLink.appendChild(userProfileDiv)
+              postDiv.appendChild(userProfileLink)
 
               //content
               const contentDiv = document.createElement('div')
@@ -137,11 +130,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
               infoIconsDiv.appendChild(likesDiv)
               contentDiv.appendChild(infoIconsDiv)
               
-              postDiv.appendChild(contentDiv)
+              const singlePostLink = document.createElement('a')
+              singlePostLink.href = `./post.html?post_id=${post.post_id}`
+              singlePostLink.appendChild(contentDiv)
+              singlePostLink.style.textDecoration = "none"
+              singlePostLink.style.color = "white"
+              postDiv.appendChild(singlePostLink)
               postsDiv.appendChild(postDiv)
           })
-
-
     })
     .catch((e)=>{
         if(!e.response){
@@ -350,17 +346,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
     })
     .then((response)=>{
-        Toastify({
-            text: response.data.message,
-            style: {
-                background: '#4caf50'
-            }, 
-            duration: 300,
-            close: true,
-            gravity: "top",
-            position: "success",
-          }).showToast();
-          
           response.data.following.forEach((user)=>{
             const followerDiv = document.createElement('div')
             followerDiv.classList.add('follower')
