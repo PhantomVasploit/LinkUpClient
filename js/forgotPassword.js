@@ -1,6 +1,18 @@
 const email = document.querySelector('#email')
 const emailError = document.querySelector('.email-error')
 
+function handleSubmissionError(message){
+    Toastify({
+        text: message,
+        duration: 50000, 
+        backgroundColor: "#f44336",
+        close: true,
+        stopOnFocus: true,
+        gravity: "top", 
+        position: "center", 
+    }).showToast();
+}
+
 document.querySelector('#forgot-password-form').addEventListener('submit', (e)=>{    
     e.preventDefault()
 
@@ -16,6 +28,31 @@ document.querySelector('#forgot-password-form').addEventListener('submit', (e)=>
         emailError.style.color = "#000000"
     })
 
-    axios.post('http://127.0.0.1:8080/api/v1/forgot-password')
-    // window.location.href = './resetToken.html'
+    axios.post('http://127.0.0.1:8080/api/link-up/v1/forgot-password', 
+    {
+        email: email.value
+    },
+    {
+        'Content-Type': 'application/json'
+    })
+    .then((response)=>{
+        Toastify({
+            text: response.data.message,
+            backgroundColor: "#4caf50", 
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "success",
+          }).showToast();
+
+        window.location.href = `./resetToken.html?email=${email.value}`
+    })
+    .catch((e)=>{
+        console.log(e.message);
+        if(!e.response){
+            handleSubmissionError(e.message)
+        }else{
+            handleSubmissionError(e.response.data.error)
+        }
+    })
 })

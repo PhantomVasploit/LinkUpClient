@@ -97,16 +97,47 @@ Cypress.Commands.add('forgotPasswordErrorHandling', ()=>{
     cy.visit('/forgotPassword.html')
     cy.get('#confirm-email-btn').click()
     cy.location('pathname').should('equal', '/html/forgotPassword.html')
+    cy.get('[aria-live="polite"]').should('contain', '"email" is not allowed to be empty')
     cy.get('.email-error').should('contain', 'Please enter the email you registered with.')
+})
+
+Cypress.Commands.add('forgotPasswordUnregisteredEmailAddress', ()=>{
+    cy.visit('/forgotPassword.html')
+    cy.get('#email').type('p@gmail.com')
+    cy.get('#confirm-email-btn').click()
+    cy.location('pathname').should('equal', '/html/forgotPassword.html')
+    cy.get('[aria-live="polite"]').should('contain', 'This email is not registered')  
+})
+
+Cypress.Commands.add('forgotPasswordRegisteredEmailAddress', ()=>{
+    cy.visit('/forgotPassword.html')
+    cy.get('#email').type('paul.nyamawi99@gmail.com')
+    cy.get('#confirm-email-btn').click()
+    cy.wait(8000)
+    cy.location('pathname').should('equal', '/html/resetToken.html')
 })
 
 //reset password token test suite commands
 Cypress.Commands.add('resetTokenErrorHandling', ()=>{
     cy.visit('/resetToken.html')
     cy.get('#reset-token-btn').click()
-    cy.get('.token-error').should('contain', 'Please enter the token you got from your email')
     cy.location('pathname').should('equal', '/html/resetToken.html')
+    cy.get('.error').should('contain', 'Please enter the token you got from your email')
+    cy.get('[aria-live="polite"]').should('contain', '"resetPasswordToken" is not allowed to be empty')
+})
 
+Cypress.Commands.add('resetTokenInvalidToken', ()=>{
+    cy.visit('/resetToken.html')
+    cy.get('#token').type('invalid token')
+    cy.get('#reset-token-btn').click()
+    cy.location('pathname').should('equal', '/html/resetToken.html')
+})
+
+Cypress.Commands.add('resetTokenValidToken', ()=>{
+    cy.visit('/resetToken.html')
+    cy.get('#token').type('87871ee36f908de0')
+    cy.get('#reset-token-btn').click()
+    cy.location('pathname').should('contain', '/html/restPassword.html')
 })
 
 //verify user account test commands

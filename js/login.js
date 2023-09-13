@@ -62,6 +62,8 @@ document.querySelector('#sign-in-form').addEventListener('submit', (e)=>{
             gravity: "top",
             position: "success",
           }).showToast();
+        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('user', JSON.stringify(response.data.user))
         window.location.href = './home.html'
     })
     .catch((e)=>{
