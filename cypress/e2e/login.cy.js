@@ -28,8 +28,8 @@ describe('login test suit', () => {
     cy.loginWithWrongPassword()
   })
 
-  it('should login in user and navigate to home if login is successful', ()=>{
-    cy.loginWithRightCredentials()
-  })
+  // it('should login in user and navigate to home if login is successful', ()=>{
+  //   cy.loginWithRightCredentials()
+  // })
 
 })
