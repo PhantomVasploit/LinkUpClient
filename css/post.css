@@ -115,6 +115,7 @@ main .main .post{
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    /* border: 1px solid white; */
 }
 
 
@@ -155,8 +156,8 @@ main .main .post .content .info-image{
 }
 
 main .main .post .content .info-image img{
-    height: 100%;
     width: 100%;
+    height: 100%;
     border-radius: 36px;
 }
 
@@ -166,18 +167,22 @@ main .main .post .content .info-icons{
     justify-content: space-between;
 }
 
-main .main .post .content .info-icons .comments, .likes{
+main .main .post .content .info-icons .comments, .likes, .unlike{
     gap: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+main .main .post .content .info-icons .unlike{
+    cursor: pointer;
+}
+
 main .main .post-comments{
     width: 100%;
     height: 45%;
-    padding-top: 25px;
     display: flex;
+    padding-top: 40px;
     flex-direction: column;
 }
 
@@ -256,6 +261,7 @@ main .main .post-comments .comment-list .cmnt{
     padding: 20px;
     align-items: flex-start;
     /* justify-content: center; */
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 main .main .post-comments .comment-list .cmnt .profile{
@@ -372,6 +378,7 @@ main .followers .users .user-container .follower .name .icon{
 
 main .followers .users .user-container .follower .view-profile button{
     border: none;
+    cursor: pointer;
     color: #000000;
     padding: 5px 15px;
     border-radius: 20px;

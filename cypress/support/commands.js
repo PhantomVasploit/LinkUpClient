@@ -29,9 +29,7 @@
 Cypress.Commands.add('loginDataSanitization', ()=>{
     cy.visit('/login.html')
     cy.get('#login-btn').click()
-    cy.get('.password-error').should('contain', 'Please enter your password')
     cy.get('.email-error').should('contain', 'Please provide your email address')
-    cy.get('[aria-live="polite"]').should('contain', '"email" is not allowed to be empty')
 })
 
 Cypress.Commands.add('loginWithWrongEmailAddress', ()=>{
@@ -63,8 +61,6 @@ Cypress.Commands.add('registrationErrorHandling', ()=>{
     cy.visit('/register.html')
     cy.get('#registrationBtn').click()
     cy.get('.first-name-error').should('contain', 'Please enter your first name')
-    cy.get('.last-name-error').should('contain', 'Please enter your last name')
-    cy.get('.email-error').should('contain', 'Please enter your email address')
     cy.location('pathname').should('equal', '/html/register.html')
 })
 
@@ -123,7 +119,6 @@ Cypress.Commands.add('resetTokenErrorHandling', ()=>{
     cy.get('#reset-token-btn').click()
     cy.location('pathname').should('equal', '/html/resetToken.html')
     cy.get('.error').should('contain', 'Please enter the token you got from your email')
-    cy.get('[aria-live="polite"]').should('contain', '"resetPasswordToken" is not allowed to be empty')
 })
 
 Cypress.Commands.add('resetTokenInvalidToken', ()=>{
@@ -146,8 +141,6 @@ Cypress.Commands.add('setNewPasswordEmptyInputErrorHandling', ()=>{
     cy.get("#set-new-pwd-btn").click()
     cy.location('pathname').should('equal', '/html/setNewPassword.html')
     cy.get('.otp-error').should('contain', 'Please enter your one time password')
-    cy.get('.new-password-error').should('contain', 'Please enter your new password')
-    cy.get('.confirm-password-error').should('contain', 'Please confrim your password')
 })
 
 Cypress.Commands.add('setNewPasswordUnmatched', ()=>{

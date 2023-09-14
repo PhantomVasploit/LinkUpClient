@@ -1,4 +1,3 @@
-
 function handleSubmissionError(message) {
     Toastify({
         text: message,
@@ -97,8 +96,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
               contentDiv.appendChild(infoDiv)
 
               // info-image
+              const infoImageDiv = document.createElement('div')
               if(post.post_image){
-                  const infoImageDiv = document.createElement('div')
                     infoImageDiv.classList.add("info-image")
                     const postImage = document.createElement('img')
                     postImage.src = post.post_image

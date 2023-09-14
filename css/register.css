@@ -167,21 +167,13 @@ main .side-image  img{
     }
 }
 
-.loaderContainer{
-    width: 100%;
-    opacity: .5;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background-color: lightgray;
-}
 
-.loader {
+
+ .loader {
     width: 1em;
     opacity: 1;
     height: 1em;
-    font-size: 45px;
+    font-size: 20px;
     color: #ffffff;
     overflow: hidden;
     border-radius: 50%;

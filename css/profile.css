@@ -29,7 +29,7 @@ main{
 }
 
 main .sidebar{
-    width: 20%;
+    width: 25%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -76,11 +76,13 @@ main .bottom .user-profile{
 main .bottom .user-profile .image{
     width: 50px;
     height: 50px;
+    border-radius: 50%;
 }
 
 main .bottom .user-profile .image img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
 main .sidebar .top p{
@@ -88,7 +90,7 @@ main .sidebar .top p{
 }
 
 main .main{
-    width: 55%;
+    width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -115,7 +117,7 @@ main .main .user-profile{
 main .main .user-info{
     width: 100%;
     height: 10%;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -123,13 +125,19 @@ main .main .user-info{
 
 main .main .user-info .profile-image{
     width: 150px;
+    z-index: 100;
     height: 150px;
     margin-top: -40px;
+    border-radius: 50%;
+    /* border: 1px solid rgba(255, 255, 255, .1); */
 }
 
 main .main .user-info .profile-image img{
     width: 100%;
     height: 100%;
+    z-index: 100;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .1);
 }
 
 main .main .user-info .user-name{
@@ -155,6 +163,7 @@ main .main .user-info .user-name .user-friends{
 main .main .user-info .edit-profile button{
     border: none;
     color: white;
+    cursor: pointer;
     padding: 10px 20px;
     border-radius: 20px;
     background-color: #162D3A;
@@ -163,6 +172,7 @@ main .main .user-info .edit-profile button{
 main .main .user-info .delete-account button{
     border: none;
     color: white;
+    cursor: pointer;
     padding: 10px 20px;
     border-radius: 20px;
     background-color: red;
@@ -271,13 +281,14 @@ main .main .user-posts .post .content .info-icons{
 }
 
 main .main .user-posts .post .content .info-icons .comments, .likes{
+    gap: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 main .followers{
-    width: 25%;
+    width: 35%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -358,6 +369,7 @@ main .followers .users .user-container .follower .name .icon{
 
 main .followers .users .user-container .follower .view-profile button{
     border: none;
+    cursor: pointer;
     color: #000000;
     padding: 5px 15px;
     border-radius: 20px;

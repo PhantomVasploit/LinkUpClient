@@ -132,7 +132,7 @@ main .main .new-post .post-creation{
     align-items: center;
 }
 
-main .main .new-post .post-creation input[type="text"]{
+main .main .new-post .post-creation #new-post{
     border: none;
     color: white;
     padding: 10px 20px;
@@ -166,6 +166,7 @@ main .main .new-post .additional-post-info input[type="file"]{
 main .main .new-post .additional-post-info button{
     border: none;
     color: white;
+    cursor: pointer;
     padding: 5px 15px;
     border-radius: 20px;
     background-color: #1D9BF0;
@@ -214,7 +215,7 @@ main .main .posts .post .content{
     justify-content: center;
 }
 
-main .main .posts .post .content .title{
+main .main .posts .post a .title{
     gap: 10px;
     display: flex;
     align-items: center;
@@ -224,7 +225,6 @@ main .main .posts .post .content .title{
 main .main .posts .post .content .info-image{
     width: 100%;
     height: 300px;
-    
     border-radius: 36px;
 }
 
@@ -329,6 +329,7 @@ main .followers .users .user-container .follower .name .icon{
 
 main .followers .users .user-container .follower .view-profile button{
     border: none;
+    cursor: pointer;
     color: #000000;
     padding: 5px 15px;
     border-radius: 20px;

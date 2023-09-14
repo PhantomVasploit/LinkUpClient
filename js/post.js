@@ -98,6 +98,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
               const postImage = document.createElement('img')
               postImage.src = response.data.post.post_image
               postImage.alt = 'post-image'
+
+              postImage.addEventListener('dblclick', ()=>{
+                axios.post(`http://127.0.0.1:8080/api/link-up/v1/post/like/${user.id}/${postId}`, 
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then((response)=>{
+                        Toastify({
+                            text: response.data.message,
+                            backgroundColor: "#4caf50", 
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "success",
+                        }).showToast();
+                        window.location.reload()
+                    })
+                    .catch((e)=>{
+                        if(!e.response){
+                            handleSubmissionError(e.message)
+                        }else{
+                            handleSubmissionError(e.response.data.error)
+                        }
+                    })
+                })
+
               infoImageDiv.appendChild(postImage)
               contentDiv.appendChild(infoImageDiv)
         }
@@ -122,6 +150,64 @@ document.addEventListener('DOMContentLoaded', ()=>{
         likeCount.innerHTML = response.data.post.like_count
         likesDiv.appendChild(likeIcon)
         likesDiv.appendChild(likeCount)
+        // unlike conditional rendering
+        axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/like/${user.id}`, 
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response_2)=>{
+            response_2.data.posts.forEach((likedPost)=>{
+                if(likedPost.id == postId){
+                    console.log(likedPost);
+                    const unlikeDiv = document.createElement('div')
+                    unlikeDiv.classList.add('unlike')
+                    const unlikeEl = document.createElement('p')
+                    unlikeEl.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="icon-park-outline:unlike"></iconify-icon>'
+                    unlikeEl.style.color = 'white'
+                    unlikeDiv.appendChild(unlikeEl)
+
+                    unlikeDiv.addEventListener('click', ()=>{
+                        console.log('clicked unlike');
+                        axios.delete(`http://127.0.0.1:8080/api/link-up/v1/post/like/${user.id}/${postId}`, 
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then((response)=>{
+                            Toastify({
+                                text: response.data.message,
+                                backgroundColor: "#4caf50", 
+                                duration: 3000,
+                                close: true,
+                                gravity: "top",
+                                position: "success",
+                            }).showToast();
+                            window.location.reload()
+                        })
+                        .catch((e)=>{
+                            if(!e.response){
+                                handleSubmissionError(e.message)
+                            }else{
+                                handleSubmissionError(e.response.data.error)
+                            }
+                        })
+                    })
+
+                    infoIconsDiv.appendChild(unlikeDiv)
+                }
+            })
+        })
+        .catch((e)=>{
+            if(!e.response){
+                handleSubmissionError(e.message)
+            }else{
+                handleSubmissionError(e.response.data.error)
+            } 
+        })
+
         infoIconsDiv.appendChild(likesDiv)
         contentDiv.appendChild(infoIconsDiv)
         postDiv.appendChild(contentDiv)
@@ -222,6 +308,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }else{
             handleSubmissionError(e.response.data.error)
         }
+    })
+
+    document.querySelector("#logout").addEventListener('click', ()=>{
+        localStorage.token = ''
+        localStorage.user = ''
+        window.location.href = './login.html'
     })
 
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 

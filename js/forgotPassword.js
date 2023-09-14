@@ -4,8 +4,10 @@ const emailError = document.querySelector('.email-error')
 function handleSubmissionError(message){
     Toastify({
         text: message,
-        duration: 50000, 
-        backgroundColor: "#f44336",
+        duration: 3000, 
+        style: {
+            background: '#f44336'
+        },
         close: true,
         stopOnFocus: true,
         gravity: "top", 
