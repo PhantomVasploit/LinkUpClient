@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/deactivateAccount.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Link Up</title>
+</head>
+<body>
+    
+    <main>
+        <section class="deactivation-form">
+            <form id="deactivation-form" action="">
+                
+                <div class="title">
+                    <h2>Deactivate Account?</h2>
+                    <div class="welcome-text">
+                        <p>
+                            This will make your account temporarily unusable. You will not be able to login, and no one will be able to re-register with the same email.
+                            This action is reversible within a 30 day period from the day of deactivation. 
+                        </p>
+                        <p>
+                            Deactivation of your account does not lead to loss of your data.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-inputs">
+
+                    <div class="password">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password">
+                        <div class="password-error"></div>
+                    </div>
+
+                </div>
+
+                <div class="deactivation-btn">
+                    <button id="deactivation-btn" type="submit">Deactivate Account</button>
+                </div>
+
+            </form>
+
+            <div class="copyright">
+                <iconify-icon icon="ph:copyright-thin"></iconify-icon>
+                <p>2023 ALL RIGHTS RESERVED</p>
+            </div>
+        </section>
+
+        <section class="side-image">
+            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/rm314-adj-01-a.jpg" alt="login back ground image">
+        </section>
+    </main>
+
+    <script src="../js/deactivateAccount.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

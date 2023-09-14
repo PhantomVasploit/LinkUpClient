@@ -46,7 +46,7 @@ main .sidebar .top, .bottom{
 }
 
 
-main .sidebar .top .home-link, .profile-link {
+main .sidebar .top .home-link, .profile-link, .liked-posts-link {
     gap: 20px;
     display: flex;
     padding: 20px;

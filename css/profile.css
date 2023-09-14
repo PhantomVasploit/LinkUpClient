@@ -46,7 +46,7 @@ main .sidebar .top, .bottom{
 }
 
 
-main .sidebar .top .home-link, .profile-link {
+main .sidebar .top .home-link, .profile-link, .liked-posts-link {
     gap: 20px;
     display: flex;
     padding: 20px;
@@ -376,10 +376,149 @@ main .followers .users .user-container .follower .view-profile button{
     background-color: white;
 }
 
+.modal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    overflow: auto;
+    position: fixed;
+    z-index: 250000;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    width: 50%;
+    padding: 20px;
+    margin: 15% auto;
+    border-radius: 10px;
+    background-color: #000000;
+    border: 2px solid rgba(255, 255, 255, .1);
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 100px;
+}
+
+main .main .new-post{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+main .main .new-post .post-creation{
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+main .main .new-post .post-creation #new-post{
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    background-color: #000000;
+}
+
+main .main .new-post .post-creation .image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+main .main .new-post .post-creation .image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+main .main .new-post .additional-post-info{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .main .new-post .additional-post-info input[type="file"]{
+    display: none;
+}
+
+main .main .new-post .additional-post-info button{
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: #1D9BF0;
+}
+
 .icon{
     color: white;
     font-weight: bold;
 }
+
+.additional-post-info .loader {
+    width: 1em;
+    opacity: 1;
+    height: 1em;
+    font-size: 20px;
+    color: #ffffff;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    transform: translateZ(0);
+    animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+  }
+  
+  @keyframes mltShdSpin {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em,
+      0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 
+      0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, 
+      -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, 
+      -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+       -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, 
+       -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+       -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, 
+       -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 
+      0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  
+  @keyframes round {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+  }
 
 @media screen and (max-width: 1024px) {
     main{

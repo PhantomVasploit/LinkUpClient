@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/forgotPassword.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Link Up</title>
+</head>
+<body>
+    
+    <main>
+        <section class="forgot-pwd-form">
+            <form id="forgot-password-form" action="">
+                
+                <div class="title">
+                    <h2>Restore Account?</h2>
+                    <div class="welcome-text">
+                        <p>
+                            Please enter the email you registered with. 
+                        </p>
+                        <p>
+                            Any other email address will not work.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-inputs">
+
+                    <div class="email">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Example@email.com">
+                        <div class="email-error"></div>
+                    </div>
+
+                </div>
+
+                <div class="confirm-email-btn">
+                    <button id="confirm-email-btn" type="submit">Restore Account</button>
+                </div>
+
+            </form>
+
+            <div class="copyright">
+                <iconify-icon icon="ph:copyright-thin"></iconify-icon>
+                <p>2023 ALL RIGHTS RESERVED</p>
+            </div>
+        </section>
+
+        <section class="side-image">
+            <img src="../assests/img/abstract-navy-blue-digital-grid-technology-background/rm314-adj-01-a.jpg" alt="login back ground image">
+        </section>
+    </main>
+
+    <script src="../js/restoreAccount.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

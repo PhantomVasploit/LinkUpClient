@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Link Up</title>
@@ -11,6 +11,7 @@
 <body>
 
     <main>
+
         <section class="sidebar">
             <div class="top">
                 <div class="home-link">
@@ -27,7 +28,7 @@
                 </div>
                 <div class="liked-posts-link">
                     <iconify-icon width="20px" height="20px" class="icon" icon="clarity:bookmark-line"></iconify-icon>
-                    <a href="./likedPosts.html">
+                    <a href="./profile.html">
                         <p>Liked</p>
                     </a>
                 </div>
@@ -54,70 +55,36 @@
         <section class="main">
 
             <div class="hero">
-                <h3>Profile</h3>
+                <h3>Liked Posts</h3>
+                <input type="text" class="search-post" name="search" id="search" placeholder="search post">
                 <iconify-icon width="30px" height="30px" class="icon" icon="bi:stars"></iconify-icon>
             </div>
 
-            <div class="user-profile">
-                <img  src="../assests/img/abstract-navy-blue-digital-grid-technology-background/jackson-hendry-eodA_8CTOFo-unsplash.jpg" alt="cover-image">
-            </div>
-
-            <div class="user-info">
-                <div class="profile-image">
-                    <img id="imageProfile" src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user profile image">
-                </div>
-                <div class="user-name">
-                    <div class="icon">
-                        <p><strong id="userName">Phantom Vasploit</strong></p>
-                        <iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>
+            <div class="new-post">
+                <form class="post-input">
+                    <div class="post-creation">
+                        <div class="image">
+                            <img id="loggedUserProfilePic" src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user-profile-image">
+                        </div>
+                        <!-- <input type="text" name="new-post" id="new-post" placeholder="Create new post."> -->
+                        <textarea name="" id="new-post" cols="50" rows="2" placeholder="Create new post."></textarea>
                     </div>
-                </div>
-                <div class="edit-profile">
-                    <a id="profileLink" href="#"><button>Edit Profile</button></a>
-                </div>
-                <div class="delete-account">
-                    <a id="deactivateAccount" href="#"><button>Deactivate Account</button></a>
-                </div>
+
+                    <div class="additional-post-info">
+                        <label for="post-image">
+                            <iconify-icon width="30px" height="30px" class="icon" icon="ic:round-image"></iconify-icon>
+                            
+                        </label>
+                        <input type="file" name="image" id="post-image">
+
+                        <button type="submit">Post</button>
+                    </div>
+                </form>
             </div>
 
-            <div class="user-posts">
-                <div class="title">
-                    <h3>Posts</h3>
-                </div>
-                <div class="post">
-                    
-                </div>
-
+            <div class="posts">
                 
             </div>
-
-            <div id="editModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalBtn">&times;</span>
-                    <h2>Edit Post</h2>
-                    <div class="new-post">
-                        <form class="post-input">
-                            <div class="post-creation">
-                                <div class="image">
-                                    <img id="loggedUserProfilePic" src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user-profile-image">
-                                </div>
-                                <textarea name="" id="new-post" cols="50" rows="2" placeholder="Create new post."></textarea>
-                            </div>
-        
-                            <div class="additional-post-info">
-                                <label for="post-image">
-                                    <iconify-icon width="30px" height="30px" class="icon" icon="ic:round-image"></iconify-icon>
-                                    
-                                </label>
-                                <input type="file" name="image" id="post-image">
-                                <span class="loader"></span>
-                                <button type="submit">Update</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
         </section>
 
         <section class="followers">
@@ -126,17 +93,21 @@
             </div>
             <div class="users">
                 <div class="title">
-                    <h3>Your Followers</h3>
+                    <h3>Following</h3>
                 </div>
                 <div class="user-container">
                     
+                    
+                    
+                    
+                  
                 </div>
             </div>
         </section>
 
     </main>
 
-    <script src="../js/profile.js" defer></script>
+    <script src="../js/likedPosts.js" defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>

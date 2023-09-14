@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     
 
-    axios.get('http://127.0.0.1:8080/api/link-up/v1/posts', 
+    axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/like/${user.id}`, 
     {
         'Content-Type': 'application/json'
     })
@@ -106,28 +106,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     contentDiv.appendChild(infoImageDiv)
               }
 
-              //info-icons
-              const infoIconsDiv = document.createElement('div')
-              infoIconsDiv.classList.add('info-icons')
-              const commentsDiv = document.createElement('div')
-              commentsDiv.classList.add('comments')
-              const commentIcon = document.createElement('p')
-              commentIcon.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>'
-              const commentCount = document.createElement('p')
-              commentCount.innerHTML = post.comment_count
-              commentsDiv.appendChild(commentIcon)
-              commentsDiv.appendChild(commentCount)
-              infoIconsDiv.appendChild(commentsDiv)
-              const likesDiv = document.createElement('div')
-              likesDiv.classList.add('likes')
-              const likeIcon = document.createElement('p')
-              likeIcon.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>'
-              const likeCount = document.createElement('p')
-              likeCount.innerHTML = post.like_count
-              likesDiv.appendChild(likeIcon)
-              likesDiv.appendChild(likeCount)
-              infoIconsDiv.appendChild(likesDiv)
-              contentDiv.appendChild(infoIconsDiv)
+            
               
               const singlePostLink = document.createElement('a')
               singlePostLink.href = `./post.html?post_id=${post.post_id}`

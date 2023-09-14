@@ -18,6 +18,18 @@ function handleSubmissionError(message){
     }).showToast();
 }
 
+email.addEventListener('input', ()=>{
+    email.style.border = '1px solid white'
+    emailError.innerHTML = ""
+    emailError.style.color = "#000000"
+})
+
+password.addEventListener('input', ()=>{
+    password.style.border = "1px solid white"
+    passwordError.innerHTML = ""
+    passwordError.style.color = "#000000"
+})
+
 document.querySelector('#sign-in-form').addEventListener('submit', (e)=>{
     e.preventDefault()
 
@@ -53,24 +65,15 @@ document.querySelector('#sign-in-form').addEventListener('submit', (e)=>{
             window.location.href = './home.html'
         })
         .catch((e)=>{
+            console.log(e);
             if(!e.response){
                 handleSubmissionError(e.message)
+            }else if(e.response.status == 403){
+                window.location.href = './restoreAccount.html'
             }else{
                 handleSubmissionError(e.response.data.error)
             }
         })
     }
-
-    email.addEventListener('input', ()=>{
-        email.style.border = '1px solid white'
-        emailError.innerHTML = ""
-        emailError.style.color = "#000000"
-    })
-
-    password.addEventListener('input', ()=>{
-        password.style.border = "1px solid white"
-        passwordError.innerHTML = ""
-        passwordError.style.color = "#000000"
-    })
 
 })
