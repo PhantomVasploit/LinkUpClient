@@ -3,6 +3,7 @@ const email = document.querySelector('#email')
 const loader = document.querySelector('.loader')
 const lastName = document.querySelector('#last-name')
 const firstName = document.querySelector('#first-name')
+const registrationBtn = document.querySelector('#registrationBtn')
 
 const emailError = document.querySelector('.email-error')
 const lastNameError = document.querySelector('.last-name-error')
@@ -16,6 +17,20 @@ function handleSubmissionError(message) {
         duration: 3000,
         style: {
             background: '#f44336'
+        },
+        close: true,
+        stopOnFocus: true,
+        gravity: "top",
+        position: "center",
+    }).showToast();
+}
+
+function handleSubmissionProgressInfo(message){
+    Toastify({
+        text: message,
+        duration: 5000,
+        style: {
+            background: '#54B4D3'
         },
         close: true,
         stopOnFocus: true,
@@ -38,7 +53,6 @@ document.querySelector("#profile-picture").addEventListener('change', (e)=>{
         formData.append("file", files[0])
         formData.append("upload_preset", "Shopie")
         formData.append("cloud_name", "dx3mq7rzr")
-
 
 
         fetch('https://api.cloudinary.com/v1_1/dx3mq7rzr/image/upload', {
@@ -64,6 +78,25 @@ document.querySelector("#profile-picture").addEventListener('change', (e)=>{
     }
 })
 
+firstName.addEventListener('input', () => {
+    firstName.style.border = "1px solid white"
+    firstNameError.innerHTML = ""
+    firstNameError.style.color = "#000000"
+})
+
+
+lastName.addEventListener('input', () => {
+    lastName.style.border = "1px solid white"
+    lastNameError.innerHTML = ""
+    lastNameError.style.color = "#000000"
+})
+
+email.addEventListener('input', () => {
+    email.style.border = "1px solid white"
+    emailError.innerHTML = ""
+    emailError.style.color = "#000000"
+})
+
 document.querySelector('#sign-up-form').addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -83,6 +116,11 @@ document.querySelector('#sign-up-form').addEventListener('submit', (e) => {
         emailError.innerHTML = "Please enter your email address"
         emailError.style.color = "red"
     }else{
+
+        handleSubmissionProgressInfo("Sit tight as we set up your account! We'll redirect you shortly.")
+
+        registrationBtn.textContent = 'Sending mail hang tight...'
+
         axios.post('http://127.0.0.1:8080/api/link-up/v1/register',
         {
             firstName: firstName.value,
@@ -106,25 +144,6 @@ document.querySelector('#sign-up-form').addEventListener('submit', (e) => {
             }
         })
     }
-
-    firstName.addEventListener('input', () => {
-        firstName.style.border = "1px solid white"
-        firstNameError.innerHTML = ""
-        firstNameError.style.color = "#000000"
-    })
-
-    
-    lastName.addEventListener('input', () => {
-        lastName.style.border = "1px solid white"
-        lastNameError.innerHTML = ""
-        lastNameError.style.color = "#000000"
-    })
-
-    email.addEventListener('input', () => {
-        email.style.border = "1px solid white"
-        emailError.innerHTML = ""
-        emailError.style.color = "#000000"
-    })
 
 })
 

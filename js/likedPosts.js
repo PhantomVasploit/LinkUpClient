@@ -126,10 +126,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     let postImage = ''
-    const postContent = document.querySelector('#new-post')
     let isPostImageUploaded = false
+    const postContent = document.querySelector('#new-post')
+    const loader = document.querySelector('.loader')
+    loader.style.display = "none"
     
     document.querySelector('#post-image').addEventListener('change', (e)=>{
+        
+        if(!isPostImageUploaded){
+            loader.style.display = 'block'
+        }
         const files = e.target.files
         if(files){
             const formData = new FormData()
@@ -148,6 +154,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 .then((response)=>{
                     postImage = response.url
                     isPostImageUploaded = true
+                    loader.style.display = "none"
                 })
             })
             .catch((e)=>{
