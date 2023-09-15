@@ -59,7 +59,7 @@
             </div>
 
             <div class="user-profile">
-                <img  src="../assests/img/abstract-navy-blue-digital-grid-technology-background/jackson-hendry-eodA_8CTOFo-unsplash.jpg" alt="cover-image">
+                <img  src="https://images.unsplash.com/photo-1509773896068-7fd415d91e2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmlnaHQlMjBza3l8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="cover-image">
             </div>
 
             <div class="user-info">
@@ -73,11 +73,9 @@
                     </div>
                 </div>
                 <div class="edit-profile">
-                    <a id="profileLink" href="#"><button>Edit Profile</button></a>
+                    <a id="profileLink" href="#"><button class="statusBtn">Follow</button></a>
                 </div>
-                <div class="delete-account">
-                    <a id="deactivateAccount" href="#"><button>Deactivate Account</button></a>
-                </div>
+                
             </div>
 
             <div class="user-posts">
@@ -90,34 +88,6 @@
 
     
             </div>
-
-            <div id="editModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalBtn">&times;</span>
-                    <h2>Edit Post</h2>
-                    <div class="new-post">
-                        <form class="post-input">
-                            <div class="post-creation">
-                                <div class="image">
-                                    <img id="loggedUserProfilePic" src="../assests/img/abstract-navy-blue-digital-grid-technology-background/user.png" alt="user-profile-image">
-                                </div>
-                                <textarea name="" id="new-post" cols="50" rows="2" placeholder="Create new post."></textarea>
-                            </div>
-        
-                            <div class="additional-post-info">
-                                <label for="post-image">
-                                    <iconify-icon width="30px" height="30px" class="icon" icon="ic:round-image"></iconify-icon>
-                                    
-                                </label>
-                                <input type="file" name="image" id="post-image">
-                                <span class="loader"></span>
-                                <button type="submit">Update</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
         </section>
 
         <section class="followers">
@@ -136,7 +106,7 @@
 
     </main>
 
-    <script src="../js/profile.js" defer></script>
+    <script src="../js/otherUserProfile.js" defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>

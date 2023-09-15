@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search)
+const userId = urlParams.get('user_id')
+
 function handleSubmissionError(message) {
     Toastify({
         text: message,
@@ -13,12 +16,6 @@ function handleSubmissionError(message) {
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    const postsDiv = document.querySelector('.post')
-    const handleNameEl = document.querySelector('#handleName')
-    const followingsDiv = document.querySelector('.user-container')
-    const loggedInUsernameEl = document.querySelector('#loggeInUserName')
-    const loggedInUserImage = document.querySelector('#loggedInUserImage')
-    
 
     const token = localStorage.token 
     let user = localStorage.user
@@ -30,21 +27,93 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     window.onload = checkData
-    user = JSON.parse(localStorage.user) 
-    
+    user = JSON.parse(localStorage.user)
+    const postsDiv = document.querySelector('.post') 
+    const handleNameEl = document.querySelector('#handleName')
+    const followingsDiv = document.querySelector('.user-container')
+    const loggedInUsernameEl = document.querySelector('#loggeInUserName')
+    const loggedInUserImage = document.querySelector('#loggedInUserImage')
+
     loggedInUserImage.src = user.avatar
     handleNameEl.innerHTML = '@' + user.first_name + "_"
     loggedInUsernameEl.innerHTML = user.first_name + " " + user.last_name
 
-    document.querySelector('#imageProfile').src=user.avatar
-    document.querySelector('#userName').innerHTML = user.first_name + " " + user.last_name
-    document.querySelector('#profileLink').href = `./updateProfile.html?user_id=${user.id}`
-    document.querySelector('#deactivateAccount').href = `./deactivateAccount.html?email=${user.email}`
-    document.querySelector('#loggedUserProfilePic').src = user.avatar
-    document.querySelector('#closeModalBtn').addEventListener('click', ()=>{
-        document.querySelector('#editModal').style.display="none"
+    axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/${userId}`, 
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
-    axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/post/${user.id}`, 
+    .then((response)=>{
+        document.querySelector('#imageProfile').src = response.data.user.avatar
+        document.querySelector('#userName').innerHTML = response.data.user.first_name + " " + response.data.user.last_name
+        axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((followings)=>{
+            followings.data.following.forEach((person)=>{
+                if(person.following_id == userId){
+                    document.querySelector('.statusBtn').textContent = "Unfollow"
+                    document.querySelector('#profileLink').addEventListener('click', ()=>{
+                        axios.delete(`http://127.0.0.1:8080/api/link-up/v1/user/unfollow/${user.id}/${userId}`, 
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then((response)=>{
+                            window.location.reload()
+                        })
+                        .catch((e)=>{
+                            if(!e.response){
+                                handleSubmissionError(e.message)
+                            }else{
+                                handleSubmissionError(e.response.data.error)
+                            }
+                        })
+                    })
+                }else{
+                    document.querySelector('#profileLink').addEventListener('click', ()=>{
+                        axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`, 
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then((response)=>{
+                            window.location.reload()
+                        })
+                        .catch((e)=>{
+                            if(!e.response){
+                                handleSubmissionError(e.message)
+                            }else{
+                                handleSubmissionError(e.response.data.error)
+                            }
+                        })
+                    })
+                }
+            })
+        })
+        .catch((e)=>{
+            if(!e.response){
+                handleSubmissionError(e.message)
+            }else{
+                handleSubmissionError(e.response.data.error)
+            }
+        })
+    })
+    .catch((e)=>{
+        if(!e.response){
+            handleSubmissionError(e.message)
+        }else{
+            handleSubmissionError(e.response.data.error)
+        }
+    })
+
+    axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/post/${userId}`, 
     {
         headers: {
             'Content-Type': 'application/json'
@@ -107,132 +176,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
 
             //info-icons
-            const infoIconsDiv = document.createElement('div')
-            infoIconsDiv.classList.add('info-icons')
-            const commentsDiv = document.createElement('div')
-            commentsDiv.classList.add('comments')
-            const commentIcon = document.createElement('p')
-            commentIcon.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="basil:edit-outline"></iconify-icon>'
-            commentIcon.style.cursor = "pointer"
-            commentsDiv.appendChild(commentIcon)
-            infoIconsDiv.appendChild(commentsDiv)
-            commentIcon.addEventListener('click', ()=>{
-                document.querySelector('#editModal').style.display="block"
-                const postContent = document.querySelector('#new-post')
-                postContent.value = post.post_content
-                
-                let postPictureUrl = ''
-                let isProfilePictureUploaded = false
-                const loader = document.querySelector('.loader')
-                loader.style.display = "none"
-
-                document.querySelector('#post-image').addEventListener('change', (e)=>{
-                    if(!isProfilePictureUploaded){
-                        loader.style.display = 'block'
-                    }
-                    
-                    const files = e.target.files
-                    if(files){
-                        const formData = new FormData()
-                        formData.append("file", files[0])
-                        formData.append("upload_preset", "Shopie")
-                        formData.append("cloud_name", "dx3mq7rzr")
-                
-                
-                
-                        fetch('https://api.cloudinary.com/v1_1/dx3mq7rzr/image/upload', {
-                            method: "POST",
-                            body: formData
-                        })
-                        .then((res)=>{
-                            res.json()
-                            
-                            .then((response)=>{
-                                postPictureUrl = response.url
-                                isProfilePictureUploaded = true
-                                loader.style.display = "none"
-                            })
-                        })
-                        .catch((e)=>{
-                            if(!e.response){
-                                handleSubmissionError(e.message)
-                            }else{
-                                handleSubmissionError(e.response.data.error)
-                            }
-                        })
-                    }
-                })
-
-                document.querySelector('.post-input').addEventListener('submit', (e)=>{
-                    e.preventDefault()
-
-                    if(!isProfilePictureUploaded){
-                        handleSubmissionError("Uploading image please wait...")
-                    }else if(postContent.value === '' || postContent.value === null || postContent.value === undefined){
-                        handleSubmissionError("Post content can not be empty")
-                    }else{
-                        axios.put(`http://127.0.0.1:8080/api/link-up/v1/post/${user.id}/${post.post_id}`,
-                        {
-                            content: postContent.value,
-                            image: postPictureUrl
-                        },
-                        {
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        })
-                        .then((response)=>{
-                            Toastify({
-                                text: response.data.message,
-                                backgroundColor: "#4caf50", 
-                                duration: 3000,
-                                close: true,
-                                gravity: "top",
-                                position: "success",
-                            }).showToast();
-                            // console.log(response);
-                            window.location.reload()
-                        })
-                        .catch((e)=>{
-                            if(!e.response){
-                                handleSubmissionError(e.message)
-                            }else{
-                                handleSubmissionError(e.response.data.error)
-                            }
-                        })
-                    }
-                })
-
-            })
-
-            const likesDiv = document.createElement('div')
-            likesDiv.classList.add('likes')
-            const likeIcon = document.createElement('p')
-            likeIcon.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="openmoji:delete"></iconify-icon>'
-            likeIcon.style.cursor = "pointer"
             
-            likeIcon.addEventListener('click', ()=>{
-                axios.delete(`http://127.0.0.1:8080/api/link-up/v1/post/${post.post_id}`, 
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then((response)=>{
-                    window.location.reload()
-                })
-                .catch((e)=>{
-                    if(!e.response){
-                        handleSubmissionError(e.message)
-                    }else{
-                        handleSubmissionError(e.response.data.error)
-                    }
-                })
-            })
-
-            likesDiv.appendChild(likeIcon)
-            infoIconsDiv.appendChild(likesDiv)
-            contentDiv.appendChild(infoIconsDiv)
             
             
             postDiv.appendChild(contentDiv)
@@ -240,6 +184,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     })
     .catch((e)=>{
+        console.log(e);
         if(!e.response){
             handleSubmissionError(e.message)
         }else{
@@ -247,12 +192,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
     })
 
-
     document.querySelector("#logout").addEventListener('click', ()=>{
         localStorage.token = ''
         localStorage.user = ''
         window.location.href = './login.html'
     })
+    
+    
 
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
     {
@@ -380,7 +326,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }   
         })
     })
-
 })
-
-

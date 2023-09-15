@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         imageDiv.appendChild(profilePicture) 
         userProfileDiv.appendChild(imageDiv) 
         const userProfileLink = document.createElement('a')
-        userProfileLink.href = `./profile.html?user_id=${response.data.post.user_id}`
+        userProfileLink.href = `./otherUserProfile.html?user_id=${response.data.post.user_id}`
         userProfileLink.style.textDecoration = "none"
         userProfileLink.appendChild(userProfileDiv)
         postDiv.appendChild(userProfileLink)

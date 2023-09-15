@@ -40,8 +40,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     handleNameEl.innerHTML = '@' + user.first_name + "_"
     loggedInUsernameEl.innerHTML = user.first_name + " " + user.last_name
 
-    
-
     axios.get('http://127.0.0.1:8080/api/link-up/v1/posts', 
     {
         'Content-Type': 'application/json'
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
               imageDiv.appendChild(profilePicture) 
               userProfileDiv.appendChild(imageDiv) 
               const userProfileLink = document.createElement('a')
-              userProfileLink.href = `./profile.html?user_id=${post.user_id}`
+              userProfileLink.href = `./otherUserProfile.html?user_id=${post.user_id}`
               userProfileLink.style.textDecoration = "none"
               userProfileLink.appendChild(userProfileDiv)
               postDiv.appendChild(userProfileLink)
