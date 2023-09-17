@@ -25,19 +25,19 @@ function handleSubmissionError(message) {
     }).showToast();
 }
 
-function handleSubmissionProgressInfo(message){
-    Toastify({
-        text: message,
-        duration: 5000,
-        style: {
-            background: '#54B4D3'
-        },
-        close: true,
-        stopOnFocus: true,
-        gravity: "top",
-        position: "center",
-    }).showToast();
-}
+// function handleSubmissionProgressInfo(message){
+//     Toastify({
+//         text: message,
+//         duration: 5000,
+//         style: {
+//             background: '#54B4D3'
+//         },
+//         close: true,
+//         stopOnFocus: true,
+//         gravity: "top",
+//         position: "center",
+//     }).showToast();
+// }
 
 loader.style.display = "none"
 
@@ -117,9 +117,9 @@ document.querySelector('#sign-up-form').addEventListener('submit', (e) => {
         emailError.style.color = "red"
     }else{
 
-        handleSubmissionProgressInfo("Sit tight as we set up your account! We'll redirect you shortly.")
+        // handleSubmissionProgressInfo("Sit tight as we set up your account! We'll redirect you shortly.")
 
-        registrationBtn.textContent = 'Sending mail hang tight...'
+        // registrationBtn.textContent = 'Sending mail hang tight...'
 
         axios.post('http://127.0.0.1:8080/api/link-up/v1/register',
         {

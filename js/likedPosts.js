@@ -44,7 +44,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/like/${user.id}`, 
     {
-        'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Beaerer: ${token}`
+        }
     })
     .then((response)=>{
           response.data.posts.forEach((post)=>{
@@ -181,7 +184,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         },
         {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Beaerer: ${token}`
             }
         })
         .then((response)=>{
@@ -219,7 +223,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/like/${user.id}`, 
         {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Beaerer: ${token}`
             }
         })
         .then((response)=>{
@@ -316,7 +321,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
     {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Beaerer: ${token}`
         }
     })
     .then((response)=>{
@@ -352,7 +358,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const viewProfileEl = document.createElement('div')
             viewProfileEl.classList.add('view-profile')
             const profilePageLinkEl = document.createElement('a')
-            profilePageLinkEl.href = '#'
+            profilePageLinkEl.href = `./otherUserProfile.html?user_id=${user.following_id}`
             const button = document.createElement('button')
             button.textContent = "Profile"
             profilePageLinkEl.appendChild(button)
@@ -377,7 +383,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
         {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Beaerer: ${token}`
             }
         })
         .then((response)=>{
@@ -420,7 +427,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     const viewProfileEl = document.createElement('div')
                     viewProfileEl.classList.add('view-profile')
                     const profilePageLinkEl = document.createElement('a')
-                    profilePageLinkEl.href = '#'
+                    profilePageLinkEl.href = `./otherUserProfile.html?user_id=${user.following_id}`
                     const button = document.createElement('button')
                     button.textContent = "Profile"
                     profilePageLinkEl.appendChild(button)

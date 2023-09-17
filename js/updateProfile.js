@@ -16,7 +16,8 @@ function handleSubmissionError(message) {
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-
+    let user = localStorage.user
+    const token = localStorage.token
     const email = document.querySelector('#email')
     const loader = document.querySelector('.loader')
     const lastName = document.querySelector('#last-name')
@@ -24,12 +25,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let profilePictureUrl = ''
     let isProfilePictureUploaded = false
 
+
+    function checkData(){
+        if(!user || !token){
+            window.location.href = './login.html'
+        }
+    }
+
+    
+    window.onload = checkData
+    user = JSON.parse(localStorage.user)
+
     loader.style.display = "none"
 
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/${userId}`, 
     {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Beaerer: ${token}`
         }
     })
     .then((response)=>{
@@ -111,7 +124,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }, 
             {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Beaerer: ${token}`
                 }
             })
             .then((response)=>{

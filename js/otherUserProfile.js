@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/${userId}`, 
     {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Beaerer: ${token}`
         }
     })
     .then((response)=>{
@@ -50,11 +51,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
         axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
         {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer: ${token}`
             }
         })
         .then((followings)=>{
-            console.log(followings);
             if(followings.data.following.length >= 1){
                 followings.data.following.forEach((person)=>{
                     if(person.following_id == userId){
@@ -63,7 +64,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                             axios.delete(`http://127.0.0.1:8080/api/link-up/v1/user/unfollow/${user.id}/${userId}`, 
                             {
                                 headers: {
-                                    'Content-Type': 'application/json'
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Beaerer: ${token}`
                                 }
                             })
                             .then((response)=>{
@@ -79,11 +81,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
                         })
                     }else{
                         document.querySelector('#profileLink').addEventListener('click', ()=>{
-                            console.log("clicked");
-                            axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`, 
+                            
+                            axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`,
+                            {}, 
                             {
                                 headers: {
-                                    'Content-Type': 'application/json'
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer: ${token}`
                                 }
                             })
                             .then((response)=>{
@@ -101,11 +105,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 })
             }else{
                 document.querySelector('#profileLink').addEventListener('click', ()=>{
-                    console.log("clicked");
+                    
                     axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`, 
                     {
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `Beaerer: ${token}`
                         }
                     })
                     .then((response)=>{
@@ -141,7 +146,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/post/${userId}`, 
     {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Beaerer: ${token}`
         }
     })
     .then((response)=>{
@@ -199,17 +205,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
                   infoImageDiv.appendChild(postImage)
                   contentDiv.appendChild(infoImageDiv)
             }
-
-            //info-icons
-            
-            
             
             postDiv.appendChild(contentDiv)
             postsDiv.appendChild(postDiv)
         })
     })
     .catch((e)=>{
-        console.log(e);
+        
         if(!e.response){
             handleSubmissionError(e.message)
         }else{
@@ -228,7 +230,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
     {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Beaerer: ${token}`
         }
     })
     .then((response)=>{
@@ -264,7 +267,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             const viewProfileEl = document.createElement('div')
             viewProfileEl.classList.add('view-profile')
             const profilePageLinkEl = document.createElement('a')
-            profilePageLinkEl.href = '#'
+            profilePageLinkEl.href = `./otherUserProfile.html?user_id=${user.following_id}`
             const button = document.createElement('button')
             button.textContent = "Profile"
             profilePageLinkEl.appendChild(button)
@@ -289,7 +292,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
         {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Beaerer: ${token}`
             }
         })
         .then((response)=>{
@@ -332,7 +336,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     const viewProfileEl = document.createElement('div')
                     viewProfileEl.classList.add('view-profile')
                     const profilePageLinkEl = document.createElement('a')
-                    profilePageLinkEl.href = '#'
+                    profilePageLinkEl.href = `./otherUserProfile.html?user_id=${user.following_id}`
                     const button = document.createElement('button')
                     button.textContent = "Profile"
                     profilePageLinkEl.appendChild(button)

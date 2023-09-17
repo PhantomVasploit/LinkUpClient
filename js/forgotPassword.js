@@ -16,19 +16,19 @@ function handleSubmissionError(message){
     }).showToast();
 }
 
-function handleSubmissionProgressInfo(message){
-    Toastify({
-        text: message,
-        duration: 5000,
-        style: {
-            background: '#54B4D3'
-        },
-        close: true,
-        stopOnFocus: true,
-        gravity: "top",
-        position: "center",
-    }).showToast();
-}
+// function handleSubmissionProgressInfo(message){
+//     Toastify({
+//         text: message,
+//         duration: 5000,
+//         style: {
+//             background: '#54B4D3'
+//         },
+//         close: true,
+//         stopOnFocus: true,
+//         gravity: "top",
+//         position: "center",
+//     }).showToast();
+// }
 
 email.addEventListener('input', ()=>{
     email.style.border = "1px solid white"
@@ -45,9 +45,9 @@ document.querySelector('#forgot-password-form').addEventListener('submit', (e)=>
         emailError.style.color = "red"
     }else{
 
-        handleSubmissionProgressInfo("We are sending you an reset password token. We'll redirect you shortly")
+        // handleSubmissionProgressInfo("We are sending you an reset password token. We'll redirect you shortly")
 
-        submitBtn.textContent = 'Sending mail hang tight...'
+        // submitBtn.textContent = 'Sending mail hang tight...'
 
         axios.post('http://127.0.0.1:8080/api/link-up/v1/forgot-password', 
         {
