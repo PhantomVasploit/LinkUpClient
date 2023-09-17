@@ -45,7 +45,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
  
     
 
-    axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/${postId}`)
+    axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/${postId}`, 
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
     .then((response)=>{
         //user profile
         const userProfileDiv = document.createElement('div')
@@ -329,8 +334,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             const userProfilePicDiv = document.createElement('div')
             userProfilePicDiv.classList.add('image')
-            const profilePicEl = document.querySelector('img')
+            const profilePicEl = document.createElement('img')
             profilePicEl.src = user.following_avatar
+            profilePicEl.style.borderRadius = "50%"
             userProfilePicDiv.appendChild(profilePicEl)
             followerDiv.appendChild(userProfilePicDiv)
 
@@ -396,8 +402,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
         
                     const userProfilePicDiv = document.createElement('div')
                     userProfilePicDiv.classList.add('image')
-                    const profilePicEl = document.querySelector('img')
+                    const profilePicEl = document.createElement('img')
                     profilePicEl.src = user.following_avatar
+                    profilePicEl.style.borderRadius = "50%"
                     userProfilePicDiv.appendChild(profilePicEl)
                     followerDiv.appendChild(userProfilePicDiv)
         

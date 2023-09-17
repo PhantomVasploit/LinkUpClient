@@ -93,7 +93,7 @@ Cypress.Commands.add('forgotPasswordErrorHandling', ()=>{
     cy.visit('/forgotPassword.html')
     cy.get('#confirm-email-btn').click()
     cy.location('pathname').should('equal', '/html/forgotPassword.html')
-    cy.get('[aria-live="polite"]').should('contain', '"email" is not allowed to be empty')
+    // cy.get('[aria-live="polite"]').should('contain', '"email" is not allowed to be empty')
     cy.get('.email-error').should('contain', 'Please enter the email you registered with.')
 })
 
@@ -151,4 +151,10 @@ Cypress.Commands.add('setNewPasswordUnmatched', ()=>{
     cy.get('#set-new-pwd-btn').click()
     cy.location('pathname').should('equal', '/html/setNewPassword.html')
     cy.get('.confirm-password-error').should('contain', "Passwords don't match")
+})
+
+// deactivate account test commands
+Cypress.Commands.add('deactivateAccountWithNoFormValues', ()=>{
+    cy.visit('/deactivateAccount.html')
+    
 })

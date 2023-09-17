@@ -54,48 +54,73 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         })
         .then((followings)=>{
-            followings.data.following.forEach((person)=>{
-                if(person.following_id == userId){
-                    document.querySelector('.statusBtn').textContent = "Unfollow"
-                    document.querySelector('#profileLink').addEventListener('click', ()=>{
-                        axios.delete(`http://127.0.0.1:8080/api/link-up/v1/user/unfollow/${user.id}/${userId}`, 
-                        {
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
+            console.log(followings);
+            if(followings.data.following.length >= 1){
+                followings.data.following.forEach((person)=>{
+                    if(person.following_id == userId){
+                        document.querySelector('.statusBtn').textContent = "Unfollow"
+                        document.querySelector('#profileLink').addEventListener('click', ()=>{
+                            axios.delete(`http://127.0.0.1:8080/api/link-up/v1/user/unfollow/${user.id}/${userId}`, 
+                            {
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then((response)=>{
+                                window.location.reload()
+                            })
+                            .catch((e)=>{
+                                if(!e.response){
+                                    handleSubmissionError(e.message)
+                                }else{
+                                    handleSubmissionError(e.response.data.error)
+                                }
+                            })
                         })
-                        .then((response)=>{
-                            window.location.reload()
+                    }else{
+                        document.querySelector('#profileLink').addEventListener('click', ()=>{
+                            console.log("clicked");
+                            axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`, 
+                            {
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then((response)=>{
+                                window.location.reload()
+                            })
+                            .catch((e)=>{
+                                if(!e.response){
+                                    handleSubmissionError(e.message)
+                                }else{
+                                    handleSubmissionError(e.response.data.error)
+                                }
+                            })
                         })
-                        .catch((e)=>{
-                            if(!e.response){
-                                handleSubmissionError(e.message)
-                            }else{
-                                handleSubmissionError(e.response.data.error)
-                            }
-                        })
+                    }
+                })
+            }else{
+                document.querySelector('#profileLink').addEventListener('click', ()=>{
+                    console.log("clicked");
+                    axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`, 
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                     })
-                }else{
-                    document.querySelector('#profileLink').addEventListener('click', ()=>{
-                        axios.post(`http://127.0.0.1:8080/api/link-up/v1/user/follow/${user.id}/${userId}`, 
-                        {
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        })
-                        .then((response)=>{
-                            window.location.reload()
-                        })
-                        .catch((e)=>{
-                            if(!e.response){
-                                handleSubmissionError(e.message)
-                            }else{
-                                handleSubmissionError(e.response.data.error)
-                            }
-                        })
+                    .then((response)=>{
+                        window.location.reload()
                     })
-                }
-            })
+                    .catch((e)=>{
+                        if(!e.response){
+                            handleSubmissionError(e.message)
+                        }else{
+                            handleSubmissionError(e.response.data.error)
+                        }
+                    })
+                })
+            }
+            
         })
         .catch((e)=>{
             if(!e.response){
@@ -213,8 +238,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             const userProfilePicDiv = document.createElement('div')
             userProfilePicDiv.classList.add('image')
-            const profilePicEl = document.querySelector('img')
+            const profilePicEl = document.createElement('img')
             profilePicEl.src = user.following_avatar
+            profilePicEl.style.borderRadius = "50%"
             userProfilePicDiv.appendChild(profilePicEl)
             followerDiv.appendChild(userProfilePicDiv)
 
@@ -280,8 +306,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
         
                     const userProfilePicDiv = document.createElement('div')
                     userProfilePicDiv.classList.add('image')
-                    const profilePicEl = document.querySelector('img')
+                    const profilePicEl = document.createElement('img')
                     profilePicEl.src = user.following_avatar
+                    profilePicEl.style.borderRadius = "50%"
                     userProfilePicDiv.appendChild(profilePicEl)
                     followerDiv.appendChild(userProfilePicDiv)
         

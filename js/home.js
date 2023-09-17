@@ -253,83 +253,93 @@ document.addEventListener('DOMContentLoaded', ()=>{
             if(filtered){
                 filtered.forEach((post)=>{
                     const postDiv = document.createElement('div')
-                      postDiv.classList.add('post')
-        
-                      //user profile
-                      const userProfileDiv = document.createElement('div')
-                      userProfileDiv.classList.add('user-profile')
-                      const imageDiv = document.createElement('div')
-                      imageDiv.classList.add('image')
-                      imageDiv.style.borderRadius = "50%"
-                      const profilePicture = document.createElement('img')
-                      profilePicture.src = post.user_avatar
-                      profilePicture.style.borderRadius = "50%"
-                      imageDiv.appendChild(profilePicture) 
-                      userProfileDiv.appendChild(imageDiv) 
-                      postDiv.appendChild(userProfileDiv)
-        
-                      //content
-                      const contentDiv = document.createElement('div')
-                      //title div
-                      contentDiv.classList.add('content')
-                      const titleDiv = document.createElement('div')
-                      titleDiv.classList.add('title')
-                      const usernameDiv = document.createElement('p')
-                      const boldDiv = document.createElement('strong')
-                      boldDiv .innerHTML = post.user_first_name + " "+ post.user_last_name
-                      usernameDiv.appendChild(boldDiv) 
-                      titleDiv.appendChild(usernameDiv)
-                      const icon = document.createElement('p')
-                      icon.innerHTML = '<iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>'
-                      titleDiv.appendChild(icon)
-                      const userHandleNameEl = document.createElement('small')
-                      const userHandleName = '@ ' + post.user_first_name + '_'
-                      userHandleNameEl.innerHTML = userHandleName
-                      titleDiv.appendChild(userHandleNameEl)
-                      contentDiv.appendChild(titleDiv)
-        
-                      // info
-                      const infoDiv = document.createElement('div')
-                      infoDiv.classList.add('info')
-                      infoDiv.innerHTML = post.post_content
-                      contentDiv.appendChild(infoDiv)
-        
-                      // info-image
-                      if(post.post_image){
-                          const infoImageDiv = document.createElement('div')
+                    postDiv.classList.add('post')
+
+                    //user profile
+                    const userProfileDiv = document.createElement('div')
+                    userProfileDiv.classList.add('user-profile')
+                    const imageDiv = document.createElement('div')
+                    imageDiv.classList.add('image')
+                    imageDiv.style.borderRadius = "50%"
+                    const profilePicture = document.createElement('img')
+                    profilePicture.src = post.user_avatar
+                    profilePicture.style.borderRadius = "50%"
+                    imageDiv.appendChild(profilePicture) 
+                    userProfileDiv.appendChild(imageDiv) 
+                    const userProfileLink = document.createElement('a')
+                    let link = post.user_id == user.id ? './profile.html' : `./otherUserProfile.html?user_id=${post.user_id}`
+                    userProfileLink.href = link
+                    userProfileLink.style.textDecoration = "none"
+                    userProfileLink.appendChild(userProfileDiv)
+                    postDiv.appendChild(userProfileLink)
+
+                    //content
+                    const contentDiv = document.createElement('div')
+                    //title div
+                    contentDiv.classList.add('content')
+                    const titleDiv = document.createElement('div')
+                    titleDiv.classList.add('title')
+                    const usernameDiv = document.createElement('p')
+                    const boldDiv = document.createElement('strong')
+                    boldDiv .innerHTML = post.user_first_name + " "+ post.user_last_name
+                    usernameDiv.appendChild(boldDiv) 
+                    titleDiv.appendChild(usernameDiv)
+                    const icon = document.createElement('p')
+                    icon.innerHTML = '<iconify-icon icon="solar:verified-check-bold-duotone"></iconify-icon>'
+                    titleDiv.appendChild(icon)
+                    const userHandleNameEl = document.createElement('small')
+                    const userHandleName = '@ ' + post.user_first_name + '_'
+                    userHandleNameEl.innerHTML = userHandleName
+                    titleDiv.appendChild(userHandleNameEl)
+                    contentDiv.appendChild(titleDiv)
+
+                    // info
+                    const infoDiv = document.createElement('div')
+                    infoDiv.classList.add('info')
+                    infoDiv.innerHTML = post.post_content
+                    contentDiv.appendChild(infoDiv)
+
+                    // info-image
+                    const infoImageDiv = document.createElement('div')
+                    if(post.post_image){
                             infoImageDiv.classList.add("info-image")
                             const postImage = document.createElement('img')
                             postImage.src = post.post_image
                             postImage.alt = 'post-image'
                             infoImageDiv.appendChild(postImage)
                             contentDiv.appendChild(infoImageDiv)
-                      }
-        
-                      //info-icons
-                      const infoIconsDiv = document.createElement('div')
-                      infoIconsDiv.classList.add('info-icons')
-                      const commentsDiv = document.createElement('div')
-                      commentsDiv.classList.add('comments')
-                      const commentIcon = document.createElement('p')
-                      commentIcon.innerHTML = '<iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>'
-                      const commentCount = document.createElement('p')
-                      commentCount.innerHTML = post.comment_count
-                      commentsDiv.appendChild(commentIcon)
-                      commentsDiv.appendChild(commentCount)
-                      infoIconsDiv.appendChild(commentsDiv)
-                      const likesDiv = document.createElement('div')
-                      likesDiv.classList.add('likes')
-                      const likeIcon = document.createElement('p')
-                      likeIcon.innerHTML = '<iconify-icon width="30px" height="30px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>'
-                      const likeCount = document.createElement('p')
-                      likeCount.innerHTML = post.like_count
-                      likesDiv.appendChild(likeIcon)
-                      likesDiv.appendChild(likeCount)
-                      infoIconsDiv.appendChild(likesDiv)
-                      contentDiv.appendChild(infoIconsDiv)
-                      
-                      postDiv.appendChild(contentDiv)
-                      postsDiv.appendChild(postDiv)
+                    }
+
+                    //info-icons
+                    const infoIconsDiv = document.createElement('div')
+                    infoIconsDiv.classList.add('info-icons')
+                    const commentsDiv = document.createElement('div')
+                    commentsDiv.classList.add('comments')
+                    const commentIcon = document.createElement('p')
+                    commentIcon.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="iconamoon:comment-thin"></iconify-icon>'
+                    const commentCount = document.createElement('p')
+                    commentCount.innerHTML = post.comment_count
+                    commentsDiv.appendChild(commentIcon)
+                    commentsDiv.appendChild(commentCount)
+                    infoIconsDiv.appendChild(commentsDiv)
+                    const likesDiv = document.createElement('div')
+                    likesDiv.classList.add('likes')
+                    const likeIcon = document.createElement('p')
+                    likeIcon.innerHTML = '<iconify-icon width="25px" height="25px" class="icon" icon="iconamoon:heart-thin"></iconify-icon>'
+                    const likeCount = document.createElement('p')
+                    likeCount.innerHTML = post.like_count
+                    likesDiv.appendChild(likeIcon)
+                    likesDiv.appendChild(likeCount)
+                    infoIconsDiv.appendChild(likesDiv)
+                    contentDiv.appendChild(infoIconsDiv)
+                    
+                    const singlePostLink = document.createElement('a')
+                    singlePostLink.href = `./post.html?post_id=${post.post_id}`
+                    singlePostLink.appendChild(contentDiv)
+                    singlePostLink.style.textDecoration = "none"
+                    singlePostLink.style.color = "white"
+                    postDiv.appendChild(singlePostLink)
+                    postsDiv.appendChild(postDiv)
                 })
             }
             
@@ -357,8 +367,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             const userProfilePicDiv = document.createElement('div')
             userProfilePicDiv.classList.add('image')
-            const profilePicEl = document.querySelector('img')
+            const profilePicEl = document.createElement('img')
             profilePicEl.src = user.following_avatar
+            profilePicEl.style.borderRadius = "50%"
             userProfilePicDiv.appendChild(profilePicEl)
             followerDiv.appendChild(userProfilePicDiv)
 
@@ -424,8 +435,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
         
                     const userProfilePicDiv = document.createElement('div')
                     userProfilePicDiv.classList.add('image')
-                    const profilePicEl = document.querySelector('img')
+                    const profilePicEl = document.createElement('img')
                     profilePicEl.src = user.following_avatar
+                    profilePicEl.style.borderRadius = "50%"
                     userProfilePicDiv.appendChild(profilePicEl)
                     followerDiv.appendChild(userProfilePicDiv)
         

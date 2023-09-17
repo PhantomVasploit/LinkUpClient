@@ -359,6 +359,7 @@ main .followers .users .user-container .follower .image{
 main .followers .users .user-container .follower .image img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
 main .followers .users .user-container .follower .name .icon{
