@@ -28,8 +28,12 @@ describe('login test suit', () => {
     cy.loginWithWrongPassword()
   })
 
-  // it('should login in user and navigate to home if login is successful', ()=>{
-  //   cy.loginWithRightCredentials()
-  // })
+  it('should login in user and navigate to home if login is successful', ()=>{
+    cy.loginWithRightCredentials()
+  })
+
+  it('should hide side image if view port is at a width of 800px or below', ()=>{
+    cy.hideLoginSideImage()
+  })
 
 })

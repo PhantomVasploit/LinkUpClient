@@ -12,4 +12,8 @@ describe('set new password test suites', ()=>{
         cy.setNewPasswordUnmatched()
     })
 
+    it('should hide side image at a viewport with max-width of 800px or below', ()=>{
+        cy.hideSetNewPasswordSideImage()
+    })
+
 })

@@ -141,7 +141,6 @@ main .side-image  img{
     border-radius: 20px;
 }
 
-
 @media screen and (max-width:800px) {
     main .side-image{
         display: none;

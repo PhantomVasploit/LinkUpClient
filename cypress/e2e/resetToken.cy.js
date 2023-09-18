@@ -10,6 +10,10 @@ describe('reset token test suite', ()=>{
         cy.resetTokenErrorHandling()
     })
 
+    it('should hide side image when viewport is at a max-width of 800px', ()=>{
+        cy.hideResetPasswordTokenSideImage()
+    })
+
     // it('should navigate to restPassword.html if token is valid', ()=>{
     //     cy.resetTokenValidToken()
     // })

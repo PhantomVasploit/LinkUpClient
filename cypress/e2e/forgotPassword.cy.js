@@ -10,7 +10,11 @@ describe('forgot password test suite', ()=>{
         cy.forgotPasswordUnregisteredEmailAddress()
     })
 
-    // it('should navigate to reset password token page if user email is valid', ()=>{
-    //     cy.forgotPasswordRegisteredEmailAddress()
-    // })
+    it('should navigate to reset password token page if user email is valid', ()=>{
+        cy.forgotPasswordRegisteredEmailAddress()
+    })
+
+    it('should hide side image at a viewport with max-width at 800px or below', ()=>{
+        cy.hideFogortPasswordSideImage()
+    })
 })

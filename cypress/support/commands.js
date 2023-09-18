@@ -32,6 +32,7 @@ Cypress.Commands.add('loginDataSanitization', ()=>{
     cy.get('.email-error').should('contain', 'Please provide your email address')
 })
 
+
 Cypress.Commands.add('loginWithWrongEmailAddress', ()=>{
     cy.visit('/login.html')
     cy.get('#email').type('paul@gmail.com')
@@ -56,6 +57,11 @@ Cypress.Commands.add('loginWithRightCredentials', ()=>{
     cy.location('pathname').should('equal', '/html/home.html')
 })
 
+Cypress.Commands.add('hideLoginSideImage', ()=>{
+    cy.visit('/login.html')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
 //registration test suite commends
 Cypress.Commands.add('registrationErrorHandling', ()=>{
     cy.visit('/register.html')
@@ -88,6 +94,12 @@ Cypress.Commands.add('registerUser', ()=>{
     cy.location('pathname').should('equal', '/html/setNewPassword.html')
 })
 
+Cypress.Commands.add('hideRegisterSideImage', ()=>{
+    cy.visit('/register.html')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
+
 // forgot password test suite commnads
 Cypress.Commands.add('forgotPasswordErrorHandling', ()=>{
     cy.visit('/forgotPassword.html')
@@ -113,6 +125,12 @@ Cypress.Commands.add('forgotPasswordRegisteredEmailAddress', ()=>{
     cy.location('pathname').should('equal', '/html/resetToken.html')
 })
 
+Cypress.Commands.add('hideFogortPasswordSideImage', ()=>{
+    cy.visit('/forgotPassword.html')
+    cy.viewport(768, 708)
+    cy.get(".side-image").should('have.css', 'display', 'none')
+})
+
 //reset password token test suite commands
 Cypress.Commands.add('resetTokenErrorHandling', ()=>{
     cy.visit('/resetToken.html')
@@ -135,6 +153,12 @@ Cypress.Commands.add('resetTokenValidToken', ()=>{
     cy.location('pathname').should('contain', '/html/restPassword.html')
 })
 
+Cypress.Commands.add('hideResetPasswordTokenSideImage', ()=>{
+    cy.visit('/resetToken.html')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
+
 //verify user account test commands
 Cypress.Commands.add('setNewPasswordEmptyInputErrorHandling', ()=>{
     cy.visit('/setNewPassword.html')
@@ -153,8 +177,106 @@ Cypress.Commands.add('setNewPasswordUnmatched', ()=>{
     cy.get('.confirm-password-error').should('contain', "Passwords don't match")
 })
 
+Cypress.Commands.add('hideSetNewPasswordSideImage', ()=>{
+    cy.visit('/setNewPassword.html')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
+
 // deactivate account test commands
 Cypress.Commands.add('deactivateAccountWithNoFormValues', ()=>{
     cy.visit('/deactivateAccount.html')
-    
+    cy.get('#deactivation-btn').click()
+    cy.get('.password-error').should('contain', 'Please enter your password')
+})
+
+Cypress.Commands.add('deactivateAccountWithCorrectPassword', ()=>{
+    cy.visit('/deactivateAccount.html?email=paulsanganyamawi@gmail.com')
+    cy.get('#password').type('pajoy9903')
+    cy.get('#deactivation-btn').click()
+    cy.location('pathname').should('equal', '/html/login.html')
+})
+Cypress.Commands.add('deactivateAccountWithWrongPassword', ()=>{
+    cy.visit('/deactivateAccount.html?email=paulsanganyamawi@gmail.com')
+    cy.get('#password').type('wrongPassword')
+    cy.get('#deactivation-btn').click()
+    cy.location('pathname').should('equal', '/html/deactivateAccount.html')
+    cy.get('[aria-live="polite"]').should('contain', 'Authentication failed')
+})
+
+Cypress.Commands.add('hideDeactivateAcountSideImage', ()=>{
+    cy.visit('/deactivateAccount.html?email=paulsanganyamawi@gmail.com')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
+
+
+// restore account test commands
+Cypress.Commands.add('hideRestoreAccountSideImage', ()=>{
+    cy.visit('/restoreAccount.html')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
+
+Cypress.Commands.add('restoreAccountWrongEmail', ()=>{
+    cy.visit('/restoreAccount.html')
+    cy.get('#email').type('p@gmail.com')
+    cy.get('#confirm-email-btn').click()
+    cy.get('[aria-live="polite"]').should('contain', 'This email is not registered')
+    cy.location('pathname').should('equal', '/html/restoreAccount.html')
+})
+
+Cypress.Commands.add('restoreAccountCorrectEmail', ()=>{
+    cy.visit('/restoreAccount.html')
+    cy.get('#email').type('paulsanganyamawi@gmail.com')
+    cy.get('#confirm-email-btn').click()
+    cy.location('pathname').should('equal', '/html/login.html')
+})
+
+Cypress.Commands.add('restoreAccountWithNoValues', ()=>{
+    cy.visit('/restoreAccount.html')
+    cy.get('#confirm-email-btn').click()
+    cy.get('.email-error').should('contain', 'Please enter the email you registered with.')
+    cy.location('pathname').should('equal', '/html/restoreAccount.html')
+})
+
+Cypress.Commands.add('restoreAccountActiveAccount', ()=>{
+    cy.visit('/restoreAccount.html')
+    cy.get('#email').type('paul.nyamawi99@gmail.com')
+    cy.get('#confirm-email-btn').click()
+    cy.location('pathname').should('equal', '/html/restoreAccount.html')
+    cy.get('[aria-live="polite"]').should('contain', 'User account is active')
+})
+
+//rest Password test commands
+Cypress.Commands.add('hideRestPasswordSideImage', ()=>{
+    cy.visit('/restPassword.html')
+    cy.viewport(768, 708)
+    cy.get('.side-image').should('have.css', 'display', 'none')
+})
+
+Cypress.Commands.add('restPassworWithNoValues', ()=>{
+    cy.visit('/restPassword.html')
+    cy.get('#set-new-pwd-btn').click()
+    cy.location('pathname').should('equal', '/html/restPassword.html')
+    cy.get('.new-password-error').should('contain', 'Please enter your new password')
+})
+
+Cypress.Commands.add('restPasswordWithDifferentPasswords', ()=>{
+    cy.visit('/restPassword.html')
+    cy.get('#new-password').type('Test@12345.')
+    cy.get('#confirm-password').type('Test@67890')
+    cy.get('#set-new-pwd-btn').click()
+    cy.get('.confirm-password-error').should('contain', "Passwords don't match")
+})
+
+// home test commands
+Cypress.Commands.add('homeFollowersHidden', ()=>{
+    cy.visit('/login.html')
+    cy.get('#email').type('paul.nyamawi99@gmail.com')
+    cy.get('#password').type('pajoy9903')
+    cy.get('#login-btn').click()
+    cy.location('pathname').should('equal', '/html/home.html')
+    cy.viewport(1024, 942)
+    cy.get('.followers').should('have.css', 'display', 'none')
 })

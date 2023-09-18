@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     loggedInUsernameEl.innerHTML = user.first_name + " " + user.last_name
  
     
+    document.querySelector('#closeModalBtn').addEventListener('click', ()=>{
+        document.querySelector('#editModal').style.display = "none";
+    })
 
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/post/${postId}`, 
     {
@@ -309,6 +312,61 @@ document.addEventListener('DOMContentLoaded', ()=>{
             cmtContentDiv.appendChild(infoEl)
 
             cmtDiv.appendChild(cmtContentDiv)
+
+            if(user.id == commentDetail.user_id){
+                cmtContentDiv.style.cursor = "pointer"
+                cmtDiv.addEventListener('click', ()=>{
+                    document.querySelector('#editModal').style.display = "block";
+                    const commentToUpdate = document.querySelector('#comment-update')
+                    commentToUpdate.value = commentDetail.comment_content
+
+                    document.querySelector('.post-input').addEventListener('submit', (e)=>{
+                        e.preventDefault()
+                        axios.put(`http://127.0.0.1:8080/api/link-up/v1/comment/${user.id}/${commentDetail.comment_id}`,
+                        {
+                            content: commentToUpdate.value
+                        }, 
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Beaerer: ${token}`
+                            }
+                        })
+                        .then((response)=>{
+                            window.location.reload()
+                        })
+                        .catch((e)=>{
+                            console.log(e);
+                            if(!e.response){
+                                handleSubmissionError(e.message)
+                            }else{
+                                handleSubmissionError(e.response.data.error)
+                            }
+                        })
+                    })
+                    
+                    document.querySelector('#deleteIcon').addEventListener('click', ()=>{
+                        axios.delete(`http://127.0.0.1:8080/api/link-up/v1/comment/${user.id}/${commentDetail.comment_id}`, 
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Beaerer: ${token}`
+                            }
+                        })
+                        .then((response)=>{
+                            window.location.reload()
+                        })
+                        .catch((e)=>{
+                            if(!e.response){
+                                handleSubmissionError(e.message)
+                            }else{
+                                handleSubmissionError(e.response.data.error)
+                            }
+                        })
+                    })
+                })
+            }
+
             commentListDiv.appendChild(cmtDiv)
 
         })

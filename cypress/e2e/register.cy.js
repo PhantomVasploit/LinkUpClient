@@ -24,4 +24,7 @@ describe('register test suite', ()=>{
         cy.registrationEmailAlreadyRegistered()
     })
     
+    it('should hide the side image at a max width of 800px or below', ()=>{
+        cy.hideRegisterSideImage()
+    })
 })
