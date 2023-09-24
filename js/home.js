@@ -234,6 +234,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         localStorage.user = ''
         window.location.href = './login.html'
     })
+
+    document.querySelector("#logout-text").addEventListener('click', ()=>{
+        localStorage.token = ''
+        localStorage.user = ''
+        window.location.href = './login.html'
+    })
     
     document.querySelector('.search-post').addEventListener('input', ()=>{
     

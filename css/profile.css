@@ -522,7 +522,7 @@ main .main .new-post .additional-post-info button{
 
 @media screen and (max-width: 1024px) {
     main{
-        border-right: 1px solid white;
+        /* border-right: 1px solid white; */
     }
     main .followers{
         display: none;
@@ -573,6 +573,10 @@ main .main .new-post .additional-post-info button{
     }
 
     main .main .user-info .user-name .icon iconify-icon{
+        display: none;
+    }
+
+    main .main .image{
         display: none;
     }
 }

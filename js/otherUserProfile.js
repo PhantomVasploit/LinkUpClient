@@ -225,7 +225,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
         window.location.href = './login.html'
     })
     
-    
+    document.querySelector("#logout-text").addEventListener('click', ()=>{
+        localStorage.token = ''
+        localStorage.user = ''
+        window.location.href = './login.html'
+    })
 
     axios.get(`http://127.0.0.1:8080/api/link-up/v1/user/followings/${user.id}`, 
     {

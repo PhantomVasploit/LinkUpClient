@@ -399,7 +399,7 @@ main .followers .users .user-container .follower .view-profile button{
 
     main .main{
         width: 70%;
-        border-right: 1px solid white;
+        /* border-right: 1px solid white; */
     }
 
     main .sidebar{
@@ -445,7 +445,7 @@ main .followers .users .user-container .follower .view-profile button{
         align-items: center;
         justify-content: center;
         flex-direction: column-reverse;
-        border-left: 1px solid white;
+        /* border-left: 1px solid white; */
     }
 
     main .main{
@@ -461,7 +461,7 @@ main .followers .users .user-container .follower .view-profile button{
     }
 
     main .sidebar .top{
-        gap: 70px;
+        
         flex-direction: row;
     }
 

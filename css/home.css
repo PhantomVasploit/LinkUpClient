@@ -49,6 +49,7 @@ main .sidebar .top .home-link, .profile-link, .liked-posts-link {
     display: flex;
     padding: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 main .sidebar .bottom .logout{
@@ -387,13 +388,15 @@ main .followers .users .user-container .follower .view-profile button{
         align-items: center;
         justify-content: space-between;
     }
-    main .sidebar a{
+    main .sidebar a p{
         display: none;
     }
     main .sidebar .top{
+        padding-top: 30px;
         flex-direction: row;
+        justify-content: center;
     }
-    main .sidebar .top .home-link, .profile-link{
+    main .sidebar .top .home-link, .profile-link, .liked-posts-link{
         flex-direction: column;
     }
     main .sidebar .bottom .user-profile{
